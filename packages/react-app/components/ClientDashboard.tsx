@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useAccount, useReadContract, useDisconnect } from "wagmi";
 import { contractAddress, contractAbi } from "@/config/Contract";
-import {useRouter} from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const ClientDashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -12,7 +12,7 @@ const ClientDashboard = () => {
   const { address, isConnected } = useAccount();
   const { disconnect } = useDisconnect();
   const router = useRouter();
-  
+
   const { data } = useReadContract({
     address: contractAddress,
     abi: contractAbi,
@@ -20,24 +20,36 @@ const ClientDashboard = () => {
     args: [address],
   });
 
-  const details = (data as Detail[]) || [];
+  const {data:token} = useReadContract({
+    address: contractAddress,
+    abi: contractAbi,
+    functionName: "balanceOf",
+    args: [address],
+  });
+
+  const details = (data as Detail);
 
   interface Detail {
-    
-    username: string;
     email: string;
-    
+    id: number;
+    purchasedIds: [];
+    tokenBalance: number;
+    username: string;
+    walletAddress: string;
   }
 
+  console.log(details);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const LogOut = () =>{
+  const LogOut = () => {
     disconnect();
     router.push("/");
-  }
+  };
+
+  console.log(token);
 
   // console.log(data);
 
@@ -74,7 +86,7 @@ const ClientDashboard = () => {
                   <span className="text-sm">Dashboard</span>
                 </Link>
               </li>
-              <li className={`mb-1 group ${isOpen ? 'selected' : ''}`}>
+              <li className={`mb-1 group ${isOpen ? "selected" : ""}`}>
                 <Link
                   href="#"
                   className="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md sidebar-dropdown-toggle"
@@ -82,9 +94,13 @@ const ClientDashboard = () => {
                 >
                   <i className="bx bx-user mr-3 text-lg"></i>
                   <span className="text-sm">Contracts</span>
-                  <i className={`ri-arrow-right-s-line ml-auto group-[.selected]:rotate-90 ${isOpen ? 'rotate-90' : ''}`}></i>
+                  <i
+                    className={`ri-arrow-right-s-line ml-auto group-[.selected]:rotate-90 ${
+                      isOpen ? "rotate-90" : ""
+                    }`}
+                  ></i>
                 </Link>
-                <ul className={`pl-7 mt-2 ${isOpen ? 'block' : 'hidden'}`}>
+                <ul className={`pl-7 mt-2 ${isOpen ? "block" : "hidden"}`}>
                   <li className="mb-4">
                     <Link
                       href="#"
@@ -470,7 +486,8 @@ const ClientDashboard = () => {
                     {details.username}
                   </h2>
                   <p className="text-xs text-gray-500">
-                    {details.walletAddress?.slice(0,6)}...{details.walletAddress?.slice(-3)}
+                    {details.walletAddress?.slice(0, 6)}...
+                    {details.walletAddress?.slice(-3)}
                   </p>
                 </div>
               </button>
@@ -509,17 +526,15 @@ const ClientDashboard = () => {
                       </Link>
                     </li>
                     <li>
-                      
-                        <button onClick = {LogOut}>
-                          <Link
-                            href="#"
-                            role="menuitem"
-                            className="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-[#f84525] hover:bg-gray-50 cursor-pointer"
-                          >
-                            Log Out
-                          </Link>
-                        </button>
-                      
+                      <button onClick={LogOut}>
+                        <Link
+                          href="#"
+                          role="menuitem"
+                          className="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-[#f84525] hover:bg-gray-50 cursor-pointer"
+                        >
+                          Log Out
+                        </Link>
+                      </button>
                     </li>
                   </ul>
                 </div>
@@ -536,7 +551,7 @@ const ClientDashboard = () => {
               <div className="flex justify-between mb-6">
                 <div>
                   <div className="flex items-center mb-1">
-                    <div className="text-2xl font-semibold">$ 0.00</div>
+                    <div className="text-2xl font-semibold">{Number(token)}</div>
                   </div>
                   <div className="text-sm font-medium text-gray-400">
                     Token balance
@@ -594,7 +609,9 @@ const ClientDashboard = () => {
               <div className="flex justify-between mb-4">
                 <div>
                   <div className="flex items-center mb-1">
-                    <div className="text-2xl font-semibold">{details.purchasedIds?.length}</div>
+                    <div className="text-2xl font-semibold">
+                      {details.purchasedIds?.length}
+                    </div>
                     <div className="p-1 rounded bg-emerald-500/10 text-emerald-500 text-[12px] font-semibold leading-none ml-2"></div>
                   </div>
                   <div className="text-sm font-medium text-gray-400">
@@ -644,7 +661,9 @@ const ClientDashboard = () => {
             <div className="bg-white rounded-md border border-gray-100 p-6 shadow-md shadow-black/5">
               <div className="flex justify-between mb-6">
                 <div>
-                  <div className="text-2xl font-semibold mb-1">{details.purchasedIds?.length}</div>
+                  <div className="text-2xl font-semibold mb-1">
+                    {details.purchasedIds?.length}
+                  </div>
                   <div className="text-sm font-medium text-gray-400">
                     All Contracts
                   </div>
