@@ -7,8 +7,7 @@ import { toast } from "sonner";
 import Header from "@/components/Header";
 
 const SignUpAsCreator = () => {
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
+  
   const { isConnected } = useAccount();
   const router = useRouter();
   const { writeContractAsync } = useWriteContract();
@@ -59,6 +58,26 @@ const SignUpAsCreator = () => {
         >
           <h1 className="text-center text-2xl font-bold">Sign Up as Client</h1>
           <form onSubmit={submit}>
+          <div style={{ marginBottom: "15px" }}>
+              <label
+                htmlFor="username"
+                style={{ display: "block", marginBottom: "5px" }}
+              >
+                Username
+              </label>
+              <input
+                type="text"
+                id="username"
+                name = "username"            
+                style={{
+                  width: "100%",
+                  padding: "8px",
+                  boxSizing: "border-box",
+                }}
+                className="bg-gray-300 rounded-md"
+                required
+              />
+            </div>
             <div style={{ marginBottom: "15px" }}>
               <label
                 htmlFor="email"
@@ -69,8 +88,8 @@ const SignUpAsCreator = () => {
               <input
                 type="email"
                 id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                name= "email"
+                
                 style={{
                   width: "100%",
                   padding: "8px",
@@ -80,27 +99,7 @@ const SignUpAsCreator = () => {
                 required
               />
             </div>
-            <div style={{ marginBottom: "15px" }}>
-              <label
-                htmlFor="username"
-                style={{ display: "block", marginBottom: "5px" }}
-              >
-                Username
-              </label>
-              <input
-                type="text"
-                id="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                style={{
-                  width: "100%",
-                  padding: "8px",
-                  boxSizing: "border-box",
-                }}
-                className="bg-gray-300 rounded-md"
-                required
-              />
-            </div>
+            
             <button
               type="submit"
               style={{

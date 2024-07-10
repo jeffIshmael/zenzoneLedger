@@ -13,12 +13,21 @@ const ClientDashboard = () => {
   const { disconnect } = useDisconnect();
   const router = useRouter();
   
-  const { data: details, refetch: refetchClient } = useReadContract({
+  const { data } = useReadContract({
     address: contractAddress,
     abi: contractAbi,
     functionName: "getClient",
     args: [address],
   });
+
+  const details = (data as Detail[]) || [];
+
+  interface Detail {
+    
+    username: string;
+    email: string;
+    
+  }
 
 
   const toggleSidebar = () => {
