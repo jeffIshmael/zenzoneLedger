@@ -45,6 +45,7 @@ contract LocalBuzz is  ERC20 {
         string tiktokLink;
         address walletAddress;
         string email;
+        
     }
 
     //array of content creators
@@ -58,6 +59,7 @@ contract LocalBuzz is  ERC20 {
         uint duration;
         uint price;
         address creator;
+        address [] buyers;
     }
     //array of packages
     Package[] packages;
@@ -78,10 +80,11 @@ contract LocalBuzz is  ERC20 {
     //events
     event clientRegistered(uint id, string username, string email, address walletAddress, uint[] purchasedIds, uint tokenBalance);
     event contentCreatorRegistered (uint id, string fullname, string username, string bio, string instagramLink, string facebookLink, string linkedinLink, string twitterLink, string tiktokLink, address walletAddress, string email);
-    event packageCreated (uint id, string mediaType, string Platform, string description, uint duration, uint price, address creator);
+    event packageCreated (uint id, string mediaType, string Platform, string description, uint duration, uint price, address creator, address [] buyers);
     event packagePurchased (uint id, address buyer, uint amount);
     event TokensRewarded(address clientAddress, uint tokenAmount);
     event TokensRedeemed(address , uint TokenAmount);
+    event packageEdited(uint id, string mediaType, string Platform, string description, uint duration, uint price, address creator);
 
     //function to register Client
     function registerClient(string memory _username, string memory _email) public {
@@ -128,12 +131,12 @@ contract LocalBuzz is  ERC20 {
         uint _price
     ) public onlyCreator {
         uint id = totalPackages;
-        Package memory newPackage = Package(id, _mediaType, _Platform, _description, _duration, _price, msg.sender);
+        Package memory newPackage = Package(id, _mediaType, _Platform, _description, _duration, _price, msg.sender, new address[](0));
         packagenId[id] = newPackage;
         packagenAdd[msg.sender] = newPackage;
         packages.push(newPackage);
         totalPackages++;
-        emit packageCreated(id, _mediaType, _Platform, _description, _duration, _price, msg.sender);
+        emit packageCreated(id, _mediaType, _Platform, _description, _duration, _price, msg.sender, new address[](0));
     }
 
     //function to edit package
@@ -144,7 +147,7 @@ contract LocalBuzz is  ERC20 {
         packagenId[_id].description = _description;
         packagenId[_id].duration = _duration;
         packagenId[_id].price = _price;
-        emit packageCreated(_id, _mediaType, _Platform, _description, _duration, _price, msg.sender);
+        emit packageEdited(_id, _mediaType, _Platform, _description, _duration, _price, msg.sender);
     }
 
     //function to purchase package
@@ -155,7 +158,8 @@ contract LocalBuzz is  ERC20 {
         (bool sent, ) = creatorAdd.call{value: Amount}("");
         require(sent, "Failed to send Ether");
         clientnAdd[msg.sender].purchasedIds.push(_id);
-        //get the LB token of 10% on amount spent        
+        //get the LB token of 10% on amount spent
+        packagenId[_id].buyers.push(msg.sender);        
         rewardTokens(msg.sender, Amount);
         emit packagePurchased(_id, msg.sender, Amount);
 

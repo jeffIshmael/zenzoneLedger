@@ -2,13 +2,14 @@ import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useEffect, useState } from "react";
-import { useConnect } from "wagmi";
+import { useConnect, useAccount } from "wagmi";
 import { injected } from "wagmi/connectors";
 import Link from "next/link";
 
 export default function Header() {
   const [hideConnectBtn, setHideConnectBtn] = useState(false);
   const { connect } = useConnect();
+  const { isConnected } = useAccount();
 
   useEffect(() => {
     if (window.ethereum && window.ethereum.isMiniPay) {
@@ -61,12 +62,14 @@ export default function Header() {
                   >
                     Explore
                   </Link>
-                  <Link
-                    href="#"
-                    className="inline-flex items-center  px-1 pt-1 text-sm font-medium text-gray-900"
-                  >
-                    Dashboard
-                  </Link>
+                  {isConnected && (
+                    <Link
+                      href="/dashboard"
+                      className="inline-flex items-center  px-1 pt-1 text-sm font-medium text-gray-900"
+                    >
+                      Dashboard
+                    </Link>
+                  )}
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
@@ -93,7 +96,7 @@ export default function Header() {
               </Disclosure.Button>
               <Disclosure.Button
                 as="a"
-                href="#"
+                href="/dashboard"
                 className="block border-l-4 border-black py-2 pl-3 pr-4 text-base font-medium text-black"
               >
                 Dashboard
