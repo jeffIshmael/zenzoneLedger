@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { useAccount, useReadContract , useDisconnect } from "wagmi";
+import { useAccount, useReadContract, useDisconnect } from "wagmi";
 import { contractAddress, contractAbi } from "@/config/Contract";
 import { useRouter } from "next/navigation";
 
@@ -10,16 +10,31 @@ const CreatorDashboard = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [viewProfile, setViewProfile] = useState(false);
   const { address, isConnected } = useAccount();
-  const {disconnect} = useDisconnect();
+  const { disconnect } = useDisconnect();
   const router = useRouter();
 
-  const { data: creator, refetch: refetchCreator } = useReadContract({
+  const { data } = useReadContract({
     address: contractAddress,
     abi: contractAbi,
     functionName: "getContentCreator",
     args: [address],
   });
 
+  const creators = (data as Creator) || [];
+
+  interface Creator {
+    bio: string;
+    email: string;
+    facebookLink: string;
+    fullname: string;
+    id: number;
+    instagramLink: string;
+    linkedinLink: string;
+    tiktokLink: string;
+    twitterLink: string;
+    username: string;
+    walletAddress: string;
+  }
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -28,9 +43,9 @@ const CreatorDashboard = () => {
   const LogOut = () => {
     disconnect();
     router.push("/");
-  }
+  };
 
-  
+  console.log(creators);
 
   return (
     <div className="text-gray-800 font-inter">
@@ -443,7 +458,6 @@ const CreatorDashboard = () => {
               </svg>
             </button>
 
-            
             <li className="dropdown ml-3">
               <button
                 type="button"
@@ -463,11 +477,11 @@ const CreatorDashboard = () => {
                 </div>
                 <div className="p-2 md:block text-left">
                   <h2 className="text-sm font-semibold text-gray-800">
-                    {creator?.username}
+                    {creators.username}
                   </h2>
                   <p className="text-xs text-gray-500">
-                    {creator?.walletAddress.slice(0, 6)}...
-                    {creator?.walletAddress.slice(-3)}
+                    {creators.walletAddress?.slice(0, 6)}...
+                    {creators.walletAddress?.slice(-3)}
                   </p>
                 </div>
               </button>
@@ -506,22 +520,19 @@ const CreatorDashboard = () => {
                       </Link>
                     </li>
                     <li>
-                      
-                        <button onClick={LogOut}>
-                            <Link
-                              href="#"
-                              role="menuitem"
-                              className="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-[#f84525] hover:bg-gray-50 cursor-pointer"
-                            >
-                              Log Out
-                            </Link>
-                        </button>
-                      
+                      <button onClick={LogOut}>
+                        <Link
+                          href="#"
+                          role="menuitem"
+                          className="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-[#f84525] hover:bg-gray-50 cursor-pointer"
+                        >
+                          Log Out
+                        </Link>
+                      </button>
                     </li>
                   </ul>
                 </div>
               )}
-            
             </li>
           </ul>
         </div>

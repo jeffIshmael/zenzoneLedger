@@ -27,7 +27,7 @@ const ClientDashboard = () => {
     args: [address],
   });
 
-  const details = (data as Detail);
+  const details = (data as Detail) || [];
 
   interface Detail {
     email: string;
