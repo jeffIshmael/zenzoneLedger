@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 import Link from "next/link";
+import Header from "../components/Header";
 
 export default function Home() {
   const [userAddress, setUserAddress] = useState("");
@@ -23,6 +24,7 @@ export default function Home() {
 
   return (
     <div>
+      <Header />
       <div className="bg-white font-sans flex flex-col  items-center justify-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6  lg:px-8">
           <div className="lg:grid lg:grid-cols-12 lg:gap-8 pt-12 lg:pt-0">
@@ -155,9 +157,9 @@ export default function Home() {
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   className="h-6 w-6 text-orange-400"
                 >
                   <path d="m3 11 18-5v12L3 14v-3z"></path>
@@ -172,9 +174,9 @@ export default function Home() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="h-4 w-4"
               >
                 <path d="M5 12h14"></path>
@@ -211,10 +213,10 @@ export default function Home() {
                 <svg
                   className="w-8 text-deep-purple-accent-400"
                   viewBox="0 0 24 24"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-miterlimit="10"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeMiterlimit="10"
                   stroke="currentColor"
                   fill="none"
                 >
