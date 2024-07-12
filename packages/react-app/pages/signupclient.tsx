@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import {CONTRACT_ADDRESS} from "../"
 import { contractAddress, contractAbi } from "../config/Contract";
 import { useWriteContract, useAccount } from "wagmi";
 import { useRouter } from "next/navigation";

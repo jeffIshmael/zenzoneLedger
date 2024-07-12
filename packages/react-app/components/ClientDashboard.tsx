@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useAccount, useReadContract, useDisconnect } from "wagmi";
@@ -9,7 +9,7 @@ const ClientDashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   const [viewProfile, setViewProfile] = useState(false);
-  const { address, isConnected } = useAccount();
+  const { address } = useAccount();
   const { disconnect } = useDisconnect();
   const router = useRouter();
 

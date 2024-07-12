@@ -51,13 +51,13 @@ export default function Header() {
                 </div>
                 <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
                   <Link
-                    href="#"
+                    href="/"
                     className="inline-flex items-center  px-1 pt-1 text-sm font-medium text-gray-900"
                   >
                     Home
                   </Link>
                   <Link
-                    href="#"
+                    href="/explore"
                     className="inline-flex items-center  px-1 pt-1 text-sm font-medium text-gray-900"
                   >
                     Explore

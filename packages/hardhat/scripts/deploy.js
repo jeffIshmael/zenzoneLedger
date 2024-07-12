@@ -7,28 +7,27 @@
 const hre = require("hardhat");
 
 async function main() {
-    // const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-    // const SIXTY_SECS = 60;
-    // const unlockTime = currentTimestampInSeconds + SIXTY_SECS;
+  // const currentTimestampInSeconds = Math.round(Date.now() / 1000);
+  // const SIXTY_SECS = 60;
+  // const unlockTime = currentTimestampInSeconds + SIXTY_SECS;
 
-    // const lockedAmount = hre.ethers.utils.parseEther("0.0001");
-    // const address = "0x765DE816845861e75A25fCA122bb6898B8B1282a"
+  // const lockedAmount = hre.ethers.utils.parseEther("0.0001");
+  // const address = "0x765DE816845861e75A25fCA122bb6898B8B1282a"
+  const address = "0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1";
 
-    const Localbuzz = await hre.ethers.getContractFactory("LocalBuzz");
-    const localbuzz = await Localbuzz.deploy();
+  const Localbuzz = await hre.ethers.getContractFactory("LocalBuzz");
+  const localbuzz = await Localbuzz.deploy(address);
 
-    console.log(`Done`);
+  console.log(`Done`);
 
-    await localbuzz.deployed();
+  await localbuzz.deployed();
 
-    console.log(
-        `Contract deployed to ${localbuzz.address}`
-    );
+  console.log(`Contract deployed to ${localbuzz.address}`);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
 // and properly handle errors.
 main().catch((error) => {
-    console.error(error);
-    process.exitCode = 1;
+  console.error(error);
+  process.exitCode = 1;
 });

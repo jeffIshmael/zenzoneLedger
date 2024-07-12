@@ -1,33 +1,20 @@
 import React, { useState } from "react";
-// import {CONTRACT_ADDRESS} from "../"
+
 import { contractAddress, contractAbi } from "../config/Contract";
 import { useWriteContract, useAccount, useConnect } from "wagmi";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import Header from "@/components/Header";
-// import { InjectedConnector } from "wagmi/connectors/InjectedConnector";
+
 
 const SignUpAsCreator = () => {
-  // const [email, setEmail] = useState("");
-  // const [username, setUsername] = useState("");
-  // const [fullname, setFullname] = useState("");
-  // const [bio, setBio] = useState("");
-  // const [instagramLink, setInstagramLink] = useState("");
-  // const [linkedinLink, setLinkedinLink] = useState("");
-  // const [twitterLink, setTwitterLink] = useState("");
-  // const [tiktokLink, setTiktokLink] = useState("");
-  // const [facebookLink, setFacebookLink] = useState("");
+ 
+  
   const { isConnected } = useAccount();
   const router = useRouter();
   const { writeContractAsync } = useWriteContract();
 
-  //   const { connect } = useConnect({
-  //     connector: new InjectedConnector(),
-  //   });
-
-  //   useEffect(() => {
-  //     connect();
-  //   }, []);
+ 
 
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
