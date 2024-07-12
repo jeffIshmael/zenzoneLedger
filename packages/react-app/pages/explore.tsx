@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useReadContract } from "wagmi";
 import { contractAddress, contractAbi } from "../config/Contract";
 
-const explore = () => {
+const Explore = () => {
   const { data, error, refetch } = useReadContract({
     address: contractAddress,
     abi: contractAbi,
@@ -210,4 +210,4 @@ const explore = () => {
   );
 };
 
-export default explore;
+export default Explore;
