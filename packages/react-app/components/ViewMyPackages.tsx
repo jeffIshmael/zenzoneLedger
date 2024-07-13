@@ -6,16 +6,16 @@ import Link from "next/link";
 
 const ViewMyPackages = () => {
   const { address } = useAccount();
-  const { data } = useReadContract({
+  const { data: packageIds } = useReadContract({
     address: contractAddress,
     abi: contractAbi,
     functionName: "getCreatorPackages",
     args: [address],
   });
 
-  const packageIds = (data as number[]) || [];
+  // const packageIds = (data as number[]) || [];
 
-  const { data : packages, refetch } = useReadContract({
+  const { data, refetch } = useReadContract({
     address: contractAddress,
     abi: contractAbi,
     functionName: "getPackage",
@@ -35,17 +35,17 @@ const ViewMyPackages = () => {
 
 
   useEffect(() => {
-    if (!packages) {
+    if (!data) {
       async () =>{
         await refetch();
-        console.log(packages);
+        console.log(data);
       }
     }
-    console.log(packages);
+    console.log(data);
     
-  }, [packages]);
+  }, [data]);
 
-  // const packages = (data as Package[]) || [];
+  const packages = (data as Package[]) || [];
 
   interface Package {
     Platform: string;
@@ -132,7 +132,7 @@ const ViewMyPackages = () => {
               </thead>
 
               <tbody>
-                {packageIds?.length === 0 ? (
+                {packages?.length === 0 ? (
                 <>
                   <tr className="flex items-center justify-center">
                     <h1>You have no packages</h1>
