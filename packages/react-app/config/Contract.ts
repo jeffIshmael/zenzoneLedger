@@ -1,16 +1,10 @@
-export const contractAddress = "0x01d7aC48d8BF59480eE49002219200651110DeC9";
+export const contractAddress = "0x66986712FA8782d6f21BC4eF30000878BE9005fb";
 
 // "0x32Dd30a57A909290CF7127A77438dABE373a95a7";
 
-export const contractAbi = [
+export const contractAbi =[
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_cUSDTokenAddress",
-        "type": "address"
-      }
-    ],
+    "inputs": [],
     "stateMutability": "nonpayable",
     "type": "constructor"
   },
@@ -385,7 +379,7 @@ export const contractAbi = [
       {
         "indexed": false,
         "internalType": "string",
-        "name": "Platform",
+        "name": "platform",
         "type": "string"
       },
       {
@@ -440,7 +434,7 @@ export const contractAbi = [
       {
         "indexed": false,
         "internalType": "string",
-        "name": "Platform",
+        "name": "platform",
         "type": "string"
       },
       {
@@ -497,10 +491,6 @@ export const contractAbi = [
     "type": "event"
   },
   {
-    "stateMutability": "payable",
-    "type": "fallback"
-  },
-  {
     "inputs": [
       {
         "internalType": "address",
@@ -552,7 +542,7 @@ export const contractAbi = [
     "inputs": [
       {
         "internalType": "address",
-        "name": "account",
+        "name": "_client",
         "type": "address"
       }
     ],
@@ -569,10 +559,10 @@ export const contractAbi = [
   },
   {
     "inputs": [],
-    "name": "cUSDTokenAddress",
+    "name": "cUSDToken",
     "outputs": [
       {
-        "internalType": "address",
+        "internalType": "contract IERC20",
         "name": "",
         "type": "address"
       }
@@ -589,7 +579,7 @@ export const contractAbi = [
       },
       {
         "internalType": "string",
-        "name": "_Platform",
+        "name": "_platform",
         "type": "string"
       },
       {
@@ -653,7 +643,7 @@ export const contractAbi = [
       },
       {
         "internalType": "string",
-        "name": "_Platform",
+        "name": "_platform",
         "type": "string"
       },
       {
@@ -1014,51 +1004,44 @@ export const contractAbi = [
     "name": "getPackage",
     "outputs": [
       {
-        "components": [
-          {
-            "internalType": "uint256",
-            "name": "id",
-            "type": "uint256"
-          },
-          {
-            "internalType": "string",
-            "name": "name",
-            "type": "string"
-          },
-          {
-            "internalType": "string",
-            "name": "Platform",
-            "type": "string"
-          },
-          {
-            "internalType": "string",
-            "name": "description",
-            "type": "string"
-          },
-          {
-            "internalType": "uint256",
-            "name": "duration",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "price",
-            "type": "uint256"
-          },
-          {
-            "internalType": "address",
-            "name": "creator",
-            "type": "address"
-          },
-          {
-            "internalType": "address[]",
-            "name": "buyers",
-            "type": "address[]"
-          }
-        ],
-        "internalType": "struct LocalBuzz.Package",
+        "internalType": "uint256",
         "name": "",
-        "type": "tuple"
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "address[]",
+        "name": "",
+        "type": "address[]"
       }
     ],
     "stateMutability": "view",
@@ -1348,9 +1331,5 @@ export const contractAbi = [
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
-  },
-  {
-    "stateMutability": "payable",
-    "type": "receive"
   }
 ];

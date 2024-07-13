@@ -148,7 +148,7 @@ export default function Home() {
           <div className="container flex flex-col justify-center mt-2 p-4 mx-auto md:p-8">
             <Link
               className="inline-flex px-1 py-1 gap-x-2 rounded-xl w-fit border-gray-400 border-2 hover:border-orange-500 items-center text-sm font-semibold text-gray-600 space-x-1"
-              href="file:///home/ubuntu/Desktop/ui/influencers_list.html"
+              href="/explore"
             >
               <span className="bg-orange-100 flex items-center justify-center gap-2 text-orange-800 text-sm font-semibold px-2.5 py-0.5 rounded-lg dark:bg-blue-900 dark:text-blue-300">
                 <svg

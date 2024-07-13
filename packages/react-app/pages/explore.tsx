@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Link from "next/link";
-import { useReadContract } from "wagmi";
+import { useReadContract , useAccount } from "wagmi";
 import { contractAddress, contractAbi } from "../config/Contract";
 
 const Explore = () => {
+  const {isConnected} = useAccount();
   const { data, error, refetch } = useReadContract({
     address: contractAddress,
     abi: contractAbi,
@@ -64,14 +65,14 @@ const Explore = () => {
               <h1>No Available influencers.</h1>
             </div>
           )}
-          {error && (
+          {error || !isConnected ? (
             <div className="flex h-screen items-center justify-center">
               <p>
                 Error fetching influencers, connect wallet if not connected and
                 try again.
               </p>
             </div>
-          )}
+          ): null}
 
           {creators?.map((creator: Creator, index: number) => (
             <Link href={`/creatorDetails/${index}`} key={index}>

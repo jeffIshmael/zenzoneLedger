@@ -8,7 +8,7 @@ import { toast } from "sonner";
 export default function CreatorDetails() {
   const router = useRouter();
   const { id } = router.query;
-  const {isConnected} = useAccount();
+  const {isConnected, address} = useAccount();
   const { data } = useReadContract({
     address: contractAddress,
     abi: contractAbi,
@@ -52,11 +52,12 @@ export default function CreatorDetails() {
   }, [packs]);
 
   console.log(creator);
+  console.log(createdPackages);
 
 
-  async function Purchase() {
-   
+  async function Purchase() {   
     if (!isConnected) {
+      console.log(address);
       toast.error("Please connect wallet");
       console.log("Please connect wallet");
       return;
@@ -68,7 +69,7 @@ export default function CreatorDetails() {
         abi: contractAbi,
         functionName: "purchasePackage",
         args: [
-          BigInt(Number(packs)),         
+          BigInt(Number(packs?.[5]))         
         ],
       });
       if (hash) {
@@ -85,7 +86,7 @@ export default function CreatorDetails() {
 
   return (
     <div>
-      <div className="md:hidden">
+      <div className="">
         <Header />
       </div>
       <div className="p-8 bg-white shadow mt-20">
@@ -147,7 +148,7 @@ export default function CreatorDetails() {
           <div>
             <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:items-center md:gap-8">
-                {packs?.length === 0 ? (
+                {!packs ? (
                   <h1 className="text-black text-center font-medium lg:px-16">
                     No Packages yet
                   </h1>
@@ -161,14 +162,14 @@ export default function CreatorDetails() {
                       <p className="mt-2 sm:mt-4">
                         <strong className="text-3xl font-bold text-gray-900 sm:text-4xl">
                           {" "}
-                          {Number(packs?.price)}{" "}
+                          {Number(packs?.[5])}{" "}
                         </strong>
 
                         <span className="text-base font-medium text-gray-700">cUSD </span>
                       </p>
                     </div>
 
-                    <h1 className="text-center text-lg font-normal mt-2">{packs?.name}</h1>
+                    <h1 className="text-center text-lg font-normal mt-2">{packs?.[1]}</h1>
 
                     <ul className="mt-2 space-y-2">
                       <li className="flex items-center gap-1">
@@ -189,7 +190,7 @@ export default function CreatorDetails() {
 
                         <span className="text-gray-700">
                           {" "}
-                          {packs?.Platform}{" "}
+                          {packs?.[2]}{" "}
                         </span>
                       </li>
 
@@ -210,7 +211,7 @@ export default function CreatorDetails() {
                         </svg>
 
                         <span className="text-gray-700">
-                          {packs?.description}
+                          {packs?.[3]}
                         </span>
                       </li>
 
@@ -231,7 +232,7 @@ export default function CreatorDetails() {
                         </svg>
 
                         <span className="text-gray-700">
-                          {Number(packs?.duration)} days
+                          {Number(packs?.[4])} days
                         </span>
                       </li>
                     </ul>

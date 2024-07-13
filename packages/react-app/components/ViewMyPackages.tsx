@@ -13,20 +13,39 @@ const ViewMyPackages = () => {
     args: [address],
   });
 
-  const { data } = useReadContract({
+  // const packageIds = (data as number[]) || [];
+
+  const { data, refetch } = useReadContract({
     address: contractAddress,
     abi: contractAbi,
     functionName: "getPackage",
     args: [packageIds],
   });
 
+  // console.log(...packageIds);
+
+  // const inputs = () => {
+  //   for(let i = 0; i < packageIds.length; i++) {
+  //     console.log(packageIds[i]);
+  //     console.log(i);
+  //   }
+  // }
+
+  // console.log(inputs);
+
+
   useEffect(() => {
-    if (!data) return;
+    if (!data) {
+      async () =>{
+        await refetch();
+        console.log(data);
+      }
+    }
     console.log(data);
     
   }, [data]);
 
-  const packages = (data as Package) || [];
+  const packages = (data as Package[]) || [];
 
   interface Package {
     Platform: string;
@@ -39,7 +58,31 @@ const ViewMyPackages = () => {
     price: number;
   };
 
-  console.log(packages.Platform);
+//   0
+// : 
+// 0n
+// 1
+// : 
+// "Indigo"
+// 2
+// : 
+// "instagram, tiktok"
+// 3
+// : 
+// "2 videos daily\n1 post weekly"
+// 4
+// : 
+// 4n
+// 5
+// : 
+// 1n
+// 6
+// : 
+// "0x4821ced48Fb4456055c86E42587f61c1F39c6315"
+
+  // console.log(packages.Platform);
+  console.log(packageIds);
+  console.log(packages);
 
   
 
@@ -98,13 +141,13 @@ const ViewMyPackages = () => {
               ):
               ( <tr>
                 <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
-                 {packages.name}
+                 {packages?.[1]}
                 </th>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
-                  {Number(packages.price)} cUSD
+                  {Number(packages?.[5])} cUSD
                 </td>
                 <td className="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                {packages.description}
+                {packages?.[3]}
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                   <div className="inline-flex items-center rounded-md shadow-sm">
