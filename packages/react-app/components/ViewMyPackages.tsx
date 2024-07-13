@@ -6,16 +6,16 @@ import Link from "next/link";
 
 const ViewMyPackages = () => {
   const { address } = useAccount();
-  const { data: packageIds } = useReadContract({
+  const { data } = useReadContract({
     address: contractAddress,
     abi: contractAbi,
     functionName: "getCreatorPackages",
     args: [address],
   });
 
-  // const packageIds = (data as number[]) || [];
+  const packageIds = (data as number[]) || [];
 
-  const { data, refetch } = useReadContract({
+  const { data : packages, refetch } = useReadContract({
     address: contractAddress,
     abi: contractAbi,
     functionName: "getPackage",
@@ -35,17 +35,17 @@ const ViewMyPackages = () => {
 
 
   useEffect(() => {
-    if (!data) {
+    if (!packages) {
       async () =>{
         await refetch();
-        console.log(data);
+        console.log(packages);
       }
     }
-    console.log(data);
+    console.log(packages);
     
-  }, [data]);
+  }, [packages]);
 
-  const packages = (data as Package[]) || [];
+  // const packages = (data as Package[]) || [];
 
   interface Package {
     Platform: string;
