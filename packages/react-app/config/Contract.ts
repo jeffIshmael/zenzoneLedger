@@ -1,1085 +1,1335 @@
-export const contractAddress = "0x939b8B965f42329047d56e40b803B33BF12B711b";
+export const contractAddress = "0x66986712FA8782d6f21BC4eF30000878BE9005fb";
 
 // "0x32Dd30a57A909290CF7127A77438dABE373a95a7";
 
-export const contractAbi = [
+export const contractAbi =[
   {
-    inputs: [],
-    stateMutability: "nonpayable",
-    type: "constructor",
+    "inputs": [],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "address",
-        name: "spender",
-        type: "address",
+        "internalType": "address",
+        "name": "spender",
+        "type": "address"
       },
       {
-        internalType: "uint256",
-        name: "allowance",
-        type: "uint256",
+        "internalType": "uint256",
+        "name": "allowance",
+        "type": "uint256"
       },
       {
-        internalType: "uint256",
-        name: "needed",
-        type: "uint256",
-      },
+        "internalType": "uint256",
+        "name": "needed",
+        "type": "uint256"
+      }
     ],
-    name: "ERC20InsufficientAllowance",
-    type: "error",
+    "name": "ERC20InsufficientAllowance",
+    "type": "error"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "address",
-        name: "sender",
-        type: "address",
+        "internalType": "address",
+        "name": "sender",
+        "type": "address"
       },
       {
-        internalType: "uint256",
-        name: "balance",
-        type: "uint256",
+        "internalType": "uint256",
+        "name": "balance",
+        "type": "uint256"
       },
       {
-        internalType: "uint256",
-        name: "needed",
-        type: "uint256",
-      },
+        "internalType": "uint256",
+        "name": "needed",
+        "type": "uint256"
+      }
     ],
-    name: "ERC20InsufficientBalance",
-    type: "error",
+    "name": "ERC20InsufficientBalance",
+    "type": "error"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "address",
-        name: "approver",
-        type: "address",
-      },
+        "internalType": "address",
+        "name": "approver",
+        "type": "address"
+      }
     ],
-    name: "ERC20InvalidApprover",
-    type: "error",
+    "name": "ERC20InvalidApprover",
+    "type": "error"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "address",
-        name: "receiver",
-        type: "address",
-      },
+        "internalType": "address",
+        "name": "receiver",
+        "type": "address"
+      }
     ],
-    name: "ERC20InvalidReceiver",
-    type: "error",
+    "name": "ERC20InvalidReceiver",
+    "type": "error"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "address",
-        name: "sender",
-        type: "address",
-      },
+        "internalType": "address",
+        "name": "sender",
+        "type": "address"
+      }
     ],
-    name: "ERC20InvalidSender",
-    type: "error",
+    "name": "ERC20InvalidSender",
+    "type": "error"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "address",
-        name: "spender",
-        type: "address",
-      },
+        "internalType": "address",
+        "name": "spender",
+        "type": "address"
+      }
     ],
-    name: "ERC20InvalidSpender",
-    type: "error",
+    "name": "ERC20InvalidSpender",
+    "type": "error"
   },
   {
-    anonymous: false,
-    inputs: [
+    "anonymous": false,
+    "inputs": [
       {
-        indexed: true,
-        internalType: "address",
-        name: "owner",
-        type: "address",
+        "indexed": true,
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
       },
       {
-        indexed: true,
-        internalType: "address",
-        name: "spender",
-        type: "address",
+        "indexed": true,
+        "internalType": "address",
+        "name": "spender",
+        "type": "address"
       },
       {
-        indexed: false,
-        internalType: "uint256",
-        name: "value",
-        type: "uint256",
-      },
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "value",
+        "type": "uint256"
+      }
     ],
-    name: "Approval",
-    type: "event",
+    "name": "Approval",
+    "type": "event"
   },
   {
-    anonymous: false,
-    inputs: [
+    "anonymous": false,
+    "inputs": [
       {
-        indexed: false,
-        internalType: "address",
-        name: "",
-        type: "address",
+        "indexed": false,
+        "internalType": "address",
+        "name": "",
+        "type": "address"
       },
       {
-        indexed: false,
-        internalType: "uint256",
-        name: "TokenAmount",
-        type: "uint256",
-      },
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "TokenAmount",
+        "type": "uint256"
+      }
     ],
-    name: "TokensRedeemed",
-    type: "event",
+    "name": "TokensRedeemed",
+    "type": "event"
   },
   {
-    anonymous: false,
-    inputs: [
+    "anonymous": false,
+    "inputs": [
       {
-        indexed: false,
-        internalType: "address",
-        name: "clientAddress",
-        type: "address",
+        "indexed": false,
+        "internalType": "address",
+        "name": "clientAddress",
+        "type": "address"
       },
       {
-        indexed: false,
-        internalType: "uint256",
-        name: "tokenAmount",
-        type: "uint256",
-      },
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "tokenAmount",
+        "type": "uint256"
+      }
     ],
-    name: "TokensRewarded",
-    type: "event",
+    "name": "TokensRewarded",
+    "type": "event"
   },
   {
-    anonymous: false,
-    inputs: [
+    "anonymous": false,
+    "inputs": [
       {
-        indexed: true,
-        internalType: "address",
-        name: "from",
-        type: "address",
+        "indexed": true,
+        "internalType": "address",
+        "name": "from",
+        "type": "address"
       },
       {
-        indexed: true,
-        internalType: "address",
-        name: "to",
-        type: "address",
+        "indexed": true,
+        "internalType": "address",
+        "name": "to",
+        "type": "address"
       },
       {
-        indexed: false,
-        internalType: "uint256",
-        name: "value",
-        type: "uint256",
-      },
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "value",
+        "type": "uint256"
+      }
     ],
-    name: "Transfer",
-    type: "event",
+    "name": "Transfer",
+    "type": "event"
   },
   {
-    anonymous: false,
-    inputs: [
+    "anonymous": false,
+    "inputs": [
       {
-        indexed: false,
-        internalType: "uint256",
-        name: "id",
-        type: "uint256",
+        "indexed": false,
+        "internalType": "address",
+        "name": "_address",
+        "type": "address"
       },
       {
-        indexed: false,
-        internalType: "string",
-        name: "username",
-        type: "string",
-      },
-      {
-        indexed: false,
-        internalType: "string",
-        name: "email",
-        type: "string",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "walletAddress",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256[]",
-        name: "purchasedIds",
-        type: "uint256[]",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "tokenBalance",
-        type: "uint256",
-      },
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
     ],
-    name: "clientRegistered",
-    type: "event",
+    "name": "cUSDDeposited",
+    "type": "event"
   },
   {
-    anonymous: false,
-    inputs: [
+    "anonymous": false,
+    "inputs": [
       {
-        indexed: false,
-        internalType: "uint256",
-        name: "id",
-        type: "uint256",
+        "indexed": false,
+        "internalType": "address",
+        "name": "_address",
+        "type": "address"
       },
       {
-        indexed: false,
-        internalType: "string",
-        name: "fullname",
-        type: "string",
-      },
-      {
-        indexed: false,
-        internalType: "string",
-        name: "username",
-        type: "string",
-      },
-      {
-        indexed: false,
-        internalType: "string",
-        name: "bio",
-        type: "string",
-      },
-      {
-        indexed: false,
-        internalType: "string",
-        name: "instagramLink",
-        type: "string",
-      },
-      {
-        indexed: false,
-        internalType: "string",
-        name: "facebookLink",
-        type: "string",
-      },
-      {
-        indexed: false,
-        internalType: "string",
-        name: "linkedinLink",
-        type: "string",
-      },
-      {
-        indexed: false,
-        internalType: "string",
-        name: "twitterLink",
-        type: "string",
-      },
-      {
-        indexed: false,
-        internalType: "string",
-        name: "tiktokLink",
-        type: "string",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "walletAddress",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "string",
-        name: "email",
-        type: "string",
-      },
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
     ],
-    name: "contentCreatorRegistered",
-    type: "event",
+    "name": "cUSDSent",
+    "type": "event"
   },
   {
-    anonymous: false,
-    inputs: [
+    "anonymous": false,
+    "inputs": [
       {
-        indexed: false,
-        internalType: "uint256",
-        name: "id",
-        type: "uint256",
+        "indexed": false,
+        "internalType": "address",
+        "name": "_address",
+        "type": "address"
       },
       {
-        indexed: false,
-        internalType: "string",
-        name: "mediaType",
-        type: "string",
-      },
-      {
-        indexed: false,
-        internalType: "string",
-        name: "Platform",
-        type: "string",
-      },
-      {
-        indexed: false,
-        internalType: "string",
-        name: "description",
-        type: "string",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "duration",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "price",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "creator",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "address[]",
-        name: "buyers",
-        type: "address[]",
-      },
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
     ],
-    name: "packageCreated",
-    type: "event",
+    "name": "cUSDWithdrawn",
+    "type": "event"
   },
   {
-    anonymous: false,
-    inputs: [
+    "anonymous": false,
+    "inputs": [
       {
-        indexed: false,
-        internalType: "uint256",
-        name: "id",
-        type: "uint256",
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
       },
       {
-        indexed: false,
-        internalType: "string",
-        name: "mediaType",
-        type: "string",
+        "indexed": false,
+        "internalType": "string",
+        "name": "username",
+        "type": "string"
       },
       {
-        indexed: false,
-        internalType: "string",
-        name: "Platform",
-        type: "string",
+        "indexed": false,
+        "internalType": "string",
+        "name": "email",
+        "type": "string"
       },
       {
-        indexed: false,
-        internalType: "string",
-        name: "description",
-        type: "string",
+        "indexed": false,
+        "internalType": "address",
+        "name": "walletAddress",
+        "type": "address"
       },
       {
-        indexed: false,
-        internalType: "uint256",
-        name: "duration",
-        type: "uint256",
+        "indexed": false,
+        "internalType": "uint256[]",
+        "name": "purchasedIds",
+        "type": "uint256[]"
       },
       {
-        indexed: false,
-        internalType: "uint256",
-        name: "price",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "creator",
-        type: "address",
-      },
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "tokenBalance",
+        "type": "uint256"
+      }
     ],
-    name: "packageEdited",
-    type: "event",
+    "name": "clientRegistered",
+    "type": "event"
   },
   {
-    anonymous: false,
-    inputs: [
+    "anonymous": false,
+    "inputs": [
       {
-        indexed: false,
-        internalType: "uint256",
-        name: "id",
-        type: "uint256",
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
       },
       {
-        indexed: false,
-        internalType: "address",
-        name: "buyer",
-        type: "address",
+        "indexed": false,
+        "internalType": "string",
+        "name": "fullname",
+        "type": "string"
       },
       {
-        indexed: false,
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256",
+        "indexed": false,
+        "internalType": "string",
+        "name": "username",
+        "type": "string"
       },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "bio",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "instagramLink",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "facebookLink",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "linkedinLink",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "twitterLink",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "tiktokLink",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256[]",
+        "name": "packagesCreated",
+        "type": "uint256[]"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "walletAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "email",
+        "type": "string"
+      }
     ],
-    name: "packagePurchased",
-    type: "event",
+    "name": "contentCreatorRegistered",
+    "type": "event"
   },
   {
-    inputs: [
+    "anonymous": false,
+    "inputs": [
       {
-        internalType: "address",
-        name: "owner",
-        type: "address",
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
       },
       {
-        internalType: "address",
-        name: "spender",
-        type: "address",
+        "indexed": false,
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
       },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "platform",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "description",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "duration",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "price",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "creator",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address[]",
+        "name": "buyers",
+        "type": "address[]"
+      }
     ],
-    name: "allowance",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
+    "name": "packageCreated",
+    "type": "event"
   },
   {
-    inputs: [
+    "anonymous": false,
+    "inputs": [
       {
-        internalType: "address",
-        name: "spender",
-        type: "address",
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
       },
       {
-        internalType: "uint256",
-        name: "value",
-        type: "uint256",
+        "indexed": false,
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
       },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "platform",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "description",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "duration",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "price",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "creator",
+        "type": "address"
+      }
     ],
-    name: "approve",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
+    "name": "packageEdited",
+    "type": "event"
   },
   {
-    inputs: [
+    "anonymous": false,
+    "inputs": [
       {
-        internalType: "address",
-        name: "account",
-        type: "address",
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
       },
-    ],
-    name: "balanceOf",
-    outputs: [
       {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
+        "indexed": false,
+        "internalType": "address",
+        "name": "buyer",
+        "type": "address"
       },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
     ],
-    stateMutability: "view",
-    type: "function",
+    "name": "packagePurchased",
+    "type": "event"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "string",
-        name: "_mediaType",
-        type: "string",
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
       },
       {
-        internalType: "string",
-        name: "_Platform",
-        type: "string",
-      },
-      {
-        internalType: "string",
-        name: "_description",
-        type: "string",
-      },
-      {
-        internalType: "uint256",
-        name: "_duration",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "_price",
-        type: "uint256",
-      },
+        "internalType": "address",
+        "name": "spender",
+        "type": "address"
+      }
     ],
-    name: "createPackage",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    "name": "allowance",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [],
-    name: "decimals",
-    outputs: [
+    "inputs": [
       {
-        internalType: "uint8",
-        name: "",
-        type: "uint8",
+        "internalType": "address",
+        "name": "spender",
+        "type": "address"
       },
+      {
+        "internalType": "uint256",
+        "name": "value",
+        "type": "uint256"
+      }
     ],
-    stateMutability: "view",
-    type: "function",
+    "name": "approve",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "uint256",
-        name: "_id",
-        type: "uint256",
-      },
-      {
-        internalType: "string",
-        name: "_mediaType",
-        type: "string",
-      },
-      {
-        internalType: "string",
-        name: "_Platform",
-        type: "string",
-      },
-      {
-        internalType: "string",
-        name: "_description",
-        type: "string",
-      },
-      {
-        internalType: "uint256",
-        name: "_duration",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "_price",
-        type: "uint256",
-      },
+        "internalType": "address",
+        "name": "_client",
+        "type": "address"
+      }
     ],
-    name: "editPackage",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    "name": "balanceOf",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [],
-    name: "getAllCreators",
-    outputs: [
+    "inputs": [],
+    "name": "cUSDToken",
+    "outputs": [
       {
-        components: [
+        "internalType": "contract IERC20",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_platform",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_description",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_duration",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_price",
+        "type": "uint256"
+      }
+    ],
+    "name": "createPackage",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "decimals",
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "depositcUSD",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_id",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "_name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_platform",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_description",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_duration",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_price",
+        "type": "uint256"
+      }
+    ],
+    "name": "editPackage",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getAllCreators",
+    "outputs": [
+      {
+        "components": [
           {
-            internalType: "uint256",
-            name: "id",
-            type: "uint256",
+            "internalType": "uint256",
+            "name": "id",
+            "type": "uint256"
           },
           {
-            internalType: "string",
-            name: "fullname",
-            type: "string",
+            "internalType": "string",
+            "name": "fullname",
+            "type": "string"
           },
           {
-            internalType: "string",
-            name: "username",
-            type: "string",
+            "internalType": "string",
+            "name": "username",
+            "type": "string"
           },
           {
-            internalType: "string",
-            name: "bio",
-            type: "string",
+            "internalType": "string",
+            "name": "bio",
+            "type": "string"
           },
           {
-            internalType: "string",
-            name: "instagramLink",
-            type: "string",
+            "internalType": "string",
+            "name": "instagramLink",
+            "type": "string"
           },
           {
-            internalType: "string",
-            name: "facebookLink",
-            type: "string",
+            "internalType": "string",
+            "name": "facebookLink",
+            "type": "string"
           },
           {
-            internalType: "string",
-            name: "linkedinLink",
-            type: "string",
+            "internalType": "string",
+            "name": "linkedinLink",
+            "type": "string"
           },
           {
-            internalType: "string",
-            name: "twitterLink",
-            type: "string",
+            "internalType": "string",
+            "name": "twitterLink",
+            "type": "string"
           },
           {
-            internalType: "string",
-            name: "tiktokLink",
-            type: "string",
+            "internalType": "string",
+            "name": "tiktokLink",
+            "type": "string"
           },
           {
-            internalType: "address",
-            name: "walletAddress",
-            type: "address",
+            "internalType": "uint256[]",
+            "name": "packagesCreated",
+            "type": "uint256[]"
           },
           {
-            internalType: "string",
-            name: "email",
-            type: "string",
+            "internalType": "address",
+            "name": "walletAddress",
+            "type": "address"
           },
+          {
+            "internalType": "string",
+            "name": "email",
+            "type": "string"
+          }
         ],
-        internalType: "struct LocalBuzz.ContentCreator[]",
-        name: "",
-        type: "tuple[]",
-      },
+        "internalType": "struct LocalBuzz.ContentCreator[]",
+        "name": "",
+        "type": "tuple[]"
+      }
     ],
-    stateMutability: "view",
-    type: "function",
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "address",
-        name: "_clientAddress",
-        type: "address",
-      },
+        "internalType": "address",
+        "name": "_clientAddress",
+        "type": "address"
+      }
     ],
-    name: "getClient",
-    outputs: [
+    "name": "getClient",
+    "outputs": [
       {
-        components: [
+        "components": [
           {
-            internalType: "uint256",
-            name: "id",
-            type: "uint256",
+            "internalType": "uint256",
+            "name": "id",
+            "type": "uint256"
           },
           {
-            internalType: "string",
-            name: "username",
-            type: "string",
+            "internalType": "string",
+            "name": "username",
+            "type": "string"
           },
           {
-            internalType: "string",
-            name: "email",
-            type: "string",
+            "internalType": "string",
+            "name": "email",
+            "type": "string"
           },
           {
-            internalType: "address",
-            name: "walletAddress",
-            type: "address",
+            "internalType": "address",
+            "name": "walletAddress",
+            "type": "address"
           },
           {
-            internalType: "uint256[]",
-            name: "purchasedIds",
-            type: "uint256[]",
+            "internalType": "uint256[]",
+            "name": "purchasedIds",
+            "type": "uint256[]"
           },
           {
-            internalType: "uint256",
-            name: "tokenBalance",
-            type: "uint256",
-          },
+            "internalType": "uint256",
+            "name": "tokenBalance",
+            "type": "uint256"
+          }
         ],
-        internalType: "struct LocalBuzz.Client",
-        name: "",
-        type: "tuple",
-      },
+        "internalType": "struct LocalBuzz.Client",
+        "name": "",
+        "type": "tuple"
+      }
     ],
-    stateMutability: "view",
-    type: "function",
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "address",
-        name: "_creatorAddress",
-        type: "address",
-      },
+        "internalType": "address",
+        "name": "_creatorAddress",
+        "type": "address"
+      }
     ],
-    name: "getContentCreator",
-    outputs: [
+    "name": "getContentCreator",
+    "outputs": [
       {
-        components: [
+        "components": [
           {
-            internalType: "uint256",
-            name: "id",
-            type: "uint256",
+            "internalType": "uint256",
+            "name": "id",
+            "type": "uint256"
           },
           {
-            internalType: "string",
-            name: "fullname",
-            type: "string",
+            "internalType": "string",
+            "name": "fullname",
+            "type": "string"
           },
           {
-            internalType: "string",
-            name: "username",
-            type: "string",
+            "internalType": "string",
+            "name": "username",
+            "type": "string"
           },
           {
-            internalType: "string",
-            name: "bio",
-            type: "string",
+            "internalType": "string",
+            "name": "bio",
+            "type": "string"
           },
           {
-            internalType: "string",
-            name: "instagramLink",
-            type: "string",
+            "internalType": "string",
+            "name": "instagramLink",
+            "type": "string"
           },
           {
-            internalType: "string",
-            name: "facebookLink",
-            type: "string",
+            "internalType": "string",
+            "name": "facebookLink",
+            "type": "string"
           },
           {
-            internalType: "string",
-            name: "linkedinLink",
-            type: "string",
+            "internalType": "string",
+            "name": "linkedinLink",
+            "type": "string"
           },
           {
-            internalType: "string",
-            name: "twitterLink",
-            type: "string",
+            "internalType": "string",
+            "name": "twitterLink",
+            "type": "string"
           },
           {
-            internalType: "string",
-            name: "tiktokLink",
-            type: "string",
+            "internalType": "string",
+            "name": "tiktokLink",
+            "type": "string"
           },
           {
-            internalType: "address",
-            name: "walletAddress",
-            type: "address",
+            "internalType": "uint256[]",
+            "name": "packagesCreated",
+            "type": "uint256[]"
           },
           {
-            internalType: "string",
-            name: "email",
-            type: "string",
+            "internalType": "address",
+            "name": "walletAddress",
+            "type": "address"
           },
+          {
+            "internalType": "string",
+            "name": "email",
+            "type": "string"
+          }
         ],
-        internalType: "struct LocalBuzz.ContentCreator",
-        name: "",
-        type: "tuple",
-      },
+        "internalType": "struct LocalBuzz.ContentCreator",
+        "name": "",
+        "type": "tuple"
+      }
     ],
-    stateMutability: "view",
-    type: "function",
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "uint256",
-        name: "_id",
-        type: "uint256",
-      },
+        "internalType": "uint256",
+        "name": "_id",
+        "type": "uint256"
+      }
     ],
-    name: "getPackage",
-    outputs: [
+    "name": "getCreator",
+    "outputs": [
       {
-        components: [
+        "components": [
           {
-            internalType: "uint256",
-            name: "id",
-            type: "uint256",
+            "internalType": "uint256",
+            "name": "id",
+            "type": "uint256"
           },
           {
-            internalType: "string",
-            name: "mediaType",
-            type: "string",
+            "internalType": "string",
+            "name": "fullname",
+            "type": "string"
           },
           {
-            internalType: "string",
-            name: "Platform",
-            type: "string",
+            "internalType": "string",
+            "name": "username",
+            "type": "string"
           },
           {
-            internalType: "string",
-            name: "description",
-            type: "string",
+            "internalType": "string",
+            "name": "bio",
+            "type": "string"
           },
           {
-            internalType: "uint256",
-            name: "duration",
-            type: "uint256",
+            "internalType": "string",
+            "name": "instagramLink",
+            "type": "string"
           },
           {
-            internalType: "uint256",
-            name: "price",
-            type: "uint256",
+            "internalType": "string",
+            "name": "facebookLink",
+            "type": "string"
           },
           {
-            internalType: "address",
-            name: "creator",
-            type: "address",
+            "internalType": "string",
+            "name": "linkedinLink",
+            "type": "string"
           },
           {
-            internalType: "address[]",
-            name: "buyers",
-            type: "address[]",
+            "internalType": "string",
+            "name": "twitterLink",
+            "type": "string"
           },
+          {
+            "internalType": "string",
+            "name": "tiktokLink",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "packagesCreated",
+            "type": "uint256[]"
+          },
+          {
+            "internalType": "address",
+            "name": "walletAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "email",
+            "type": "string"
+          }
         ],
-        internalType: "struct LocalBuzz.Package",
-        name: "",
-        type: "tuple",
-      },
+        "internalType": "struct LocalBuzz.ContentCreator",
+        "name": "",
+        "type": "tuple"
+      }
     ],
-    stateMutability: "view",
-    type: "function",
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "address",
-        name: "_address",
-        type: "address",
-      },
+        "internalType": "address",
+        "name": "_creatorAddress",
+        "type": "address"
+      }
     ],
-    name: "isClient",
-    outputs: [
+    "name": "getCreatorClients",
+    "outputs": [
       {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
+        "internalType": "address[]",
+        "name": "",
+        "type": "address[]"
+      }
     ],
-    stateMutability: "view",
-    type: "function",
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "address",
-        name: "_address",
-        type: "address",
-      },
+        "internalType": "address",
+        "name": "_creatorAddress",
+        "type": "address"
+      }
     ],
-    name: "isContentCreator",
-    outputs: [
+    "name": "getCreatorPackages",
+    "outputs": [
       {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
+        "internalType": "uint256[]",
+        "name": "",
+        "type": "uint256[]"
+      }
     ],
-    stateMutability: "view",
-    type: "function",
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [],
-    name: "name",
-    outputs: [
+    "inputs": [
       {
-        internalType: "string",
-        name: "",
-        type: "string",
-      },
+        "internalType": "uint256",
+        "name": "_id",
+        "type": "uint256"
+      }
     ],
-    stateMutability: "view",
-    type: "function",
+    "name": "getPackage",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "address[]",
+        "name": "",
+        "type": "address[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "uint256",
-        name: "_id",
-        type: "uint256",
-      },
+        "internalType": "address",
+        "name": "_address",
+        "type": "address"
+      }
     ],
-    name: "purchasePackage",
-    outputs: [],
-    stateMutability: "payable",
-    type: "function",
+    "name": "isClient",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "uint256",
-        name: "_tokenAmount",
-        type: "uint256",
-      },
+        "internalType": "address",
+        "name": "_address",
+        "type": "address"
+      }
     ],
-    name: "redeemTokens",
-    outputs: [],
-    stateMutability: "payable",
-    type: "function",
+    "name": "isContentCreator",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [],
+    "name": "name",
+    "outputs": [
       {
-        internalType: "string",
-        name: "_username",
-        type: "string",
-      },
-      {
-        internalType: "string",
-        name: "_email",
-        type: "string",
-      },
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
     ],
-    name: "registerClient",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
       {
-        internalType: "string",
-        name: "_fullname",
-        type: "string",
-      },
-      {
-        internalType: "string",
-        name: "_username",
-        type: "string",
-      },
-      {
-        internalType: "string",
-        name: "_bio",
-        type: "string",
-      },
-      {
-        internalType: "string",
-        name: "_instagramLink",
-        type: "string",
-      },
-      {
-        internalType: "string",
-        name: "_facebookLink",
-        type: "string",
-      },
-      {
-        internalType: "string",
-        name: "_linkedinLink",
-        type: "string",
-      },
-      {
-        internalType: "string",
-        name: "_twitterLink",
-        type: "string",
-      },
-      {
-        internalType: "string",
-        name: "_tiktokLink",
-        type: "string",
-      },
-      {
-        internalType: "string",
-        name: "_email",
-        type: "string",
-      },
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
     ],
-    name: "registerContentCreator",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "address",
-        name: "_address",
-        type: "address",
-      },
+        "internalType": "uint256",
+        "name": "_id",
+        "type": "uint256"
+      }
     ],
-    name: "registered",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
+    "name": "purchasePackage",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
   },
   {
-    inputs: [],
-    name: "symbol",
-    outputs: [
+    "inputs": [
       {
-        internalType: "string",
-        name: "",
-        type: "string",
-      },
+        "internalType": "uint256",
+        "name": "_tokenAmount",
+        "type": "uint256"
+      }
     ],
-    stateMutability: "view",
-    type: "function",
+    "name": "redeemTokens",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
   },
   {
-    inputs: [],
-    name: "totalSupply",
-    outputs: [
+    "inputs": [
       {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
+        "internalType": "string",
+        "name": "_username",
+        "type": "string"
       },
+      {
+        "internalType": "string",
+        "name": "_email",
+        "type": "string"
+      }
     ],
-    stateMutability: "view",
-    type: "function",
+    "name": "registerClient",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "address",
-        name: "to",
-        type: "address",
+        "internalType": "string",
+        "name": "_fullname",
+        "type": "string"
       },
       {
-        internalType: "uint256",
-        name: "value",
-        type: "uint256",
+        "internalType": "string",
+        "name": "_username",
+        "type": "string"
       },
+      {
+        "internalType": "string",
+        "name": "_bio",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_instagramLink",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_facebookLink",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_linkedinLink",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_twitterLink",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_tiktokLink",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_email",
+        "type": "string"
+      }
     ],
-    name: "transfer",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
+    "name": "registerContentCreator",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "address",
-        name: "from",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "to",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "value",
-        type: "uint256",
-      },
+        "internalType": "address",
+        "name": "_address",
+        "type": "address"
+      }
     ],
-    name: "transferFrom",
-    outputs: [
+    "name": "registered",
+    "outputs": [
       {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
     ],
-    stateMutability: "nonpayable",
-    type: "function",
+    "stateMutability": "view",
+    "type": "function"
   },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "sendcUSD",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "symbol",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "totalSupply",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "to",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "value",
+        "type": "uint256"
+      }
+    ],
+    "name": "transfer",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "from",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "to",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "value",
+        "type": "uint256"
+      }
+    ],
+    "name": "transferFrom",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "withdrawcUSD",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
 ];

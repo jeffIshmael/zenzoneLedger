@@ -4,12 +4,14 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useAccount, useReadContract, useDisconnect } from "wagmi";
 import { contractAddress, contractAbi } from "@/config/Contract";
 import { useRouter } from "next/navigation";
+import ViewMyPackages from "./ViewMyPackages";
 
 const CreatorDashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   const [viewProfile, setViewProfile] = useState(false);
-  const { address, isConnected } = useAccount();
+  const [activeSection, setActiveSection] = useState('section');
+  const { address } = useAccount();
   const { disconnect } = useDisconnect();
   const router = useRouter();
 
@@ -38,6 +40,10 @@ const CreatorDashboard = () => {
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const handleButtonClick = (sectionName:string) => {
+    setActiveSection(sectionName); // Update active section on dashboard
   };
 
   const LogOut = () => {
@@ -72,17 +78,17 @@ const CreatorDashboard = () => {
             <ul className="mt-4">
               <span className="text-gray-400 font-bold">ADMIN</span>
               <li className="mb-1 group">
-                <Link
-                  href="#"
+                <button
+                  onClick={() => handleButtonClick('section')}
                   className="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100"
                 >
                   <i className="ri-home-2-line mr-3 text-lg"></i>
                   <span className="text-sm">Dashboard</span>
-                </Link>
+                </button>
               </li>
               <li className={`mb-1 group ${isOpen ? "selected" : ""}`}>
-                <Link
-                  href="#"
+                <button
+                  
                   className="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md sidebar-dropdown-toggle"
                   onClick={() => setIsOpen(!isOpen)}
                 >
@@ -93,15 +99,15 @@ const CreatorDashboard = () => {
                       isOpen ? "rotate-90" : ""
                     }`}
                   ></i>
-                </Link>
+                </button>
                 <ul className={`pl-7 mt-2 ${isOpen ? "block" : "hidden"}`}>
                   <li className="mb-4">
-                    <Link
-                      href="#"
+                    <button
+                      onClick={() => handleButtonClick('packages')}
                       className="text-gray-900 text-sm flex items-center hover:text-[#f84525] before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3"
                     >
                       All
-                    </Link>
+                    </button>
                   </li>
                   <li className="mb-4">
                     <Link
@@ -444,19 +450,6 @@ const CreatorDashboard = () => {
                 </div>
               </div>
             </li>
-            <button id="fullscreen-button">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                className="hover:bg-gray-100 rounded-full"
-                viewBox="0 0 24 24"
-                // style="fill: gray;transform: ;msFilter:;"
-                // style={{ fill: "gray", transform: "", msFilter: "" }}
-              >
-                <path d="M5 5h5V3H3v7h2zm5 14H5v-5H3v7h7zm11-5h-2v5h-5v2h7zm-2-4h2V3h-7v2h5z"></path>
-              </svg>
-            </button>
 
             <li className="dropdown ml-3">
               <button
@@ -539,7 +532,7 @@ const CreatorDashboard = () => {
         {/* <!-- end navbar -->
 
       <!-- Content --> */}
-        <div className="p-6">
+      {activeSection ==='section' && (<div className="p-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
             <div className="bg-white rounded-md border border-gray-100 p-6 shadow-md shadow-black/5">
               <div className="flex justify-between mb-6">
@@ -551,47 +544,7 @@ const CreatorDashboard = () => {
                     Marketing Packages
                   </div>
                 </div>
-
-                <div className="dropdown">
-                  <button
-                    type="button"
-                    className="dropdown-toggle text-gray-400 hover:text-gray-600"
-                  >
-                    <i className="ri-more-fill"></i>
-                  </button>
-                  <ul className="dropdown-menu shadow-md shadow-black/5 z-30 hidden py-1.5 rounded-md bg-white border border-gray-100 w-full max-w-[140px]">
-                    <li>
-                      <Link
-                        href="#"
-                        className="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50"
-                      >
-                        Profile
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="#"
-                        className="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50"
-                      >
-                        Settings
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="#"
-                        className="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50"
-                      >
-                        Logout
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
               </div>
-
-              <Link
-                href="#"
-                className="text-[#f84525] font-medium text-sm hover:text-red-800"
-              ></Link>
             </div>
             <div className="bg-white rounded-md border border-gray-100 p-6 shadow-md shadow-black/5">
               <div className="flex justify-between mb-4">
@@ -603,40 +556,6 @@ const CreatorDashboard = () => {
                   <div className="text-sm font-medium text-gray-400">
                     Clients
                   </div>
-                </div>
-                <div className="dropdown">
-                  <button
-                    type="button"
-                    className="dropdown-toggle text-gray-400 hover:text-gray-600"
-                  >
-                    <i className="ri-more-fill"></i>
-                  </button>
-                  <ul className="dropdown-menu shadow-md shadow-black/5 z-30 hidden py-1.5 rounded-md bg-white border border-gray-100 w-full max-w-[140px]">
-                    <li>
-                      <Link
-                        href="#"
-                        className="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50"
-                      >
-                        Profile
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="#"
-                        className="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50"
-                      >
-                        Settings
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="#"
-                        className="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50"
-                      >
-                        Logout
-                      </Link>
-                    </li>
-                  </ul>
                 </div>
               </div>
               <Link
@@ -693,40 +612,6 @@ const CreatorDashboard = () => {
             <div className="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md">
               <div className="flex justify-between mb-4 items-start">
                 <div className="font-medium">Payments</div>
-                <div className="dropdown">
-                  <button
-                    type="button"
-                    className="dropdown-toggle text-gray-400 hover:text-gray-600"
-                  >
-                    <i className="ri-more-fill"></i>
-                  </button>
-                  <ul className="dropdown-menu shadow-md shadow-black/5 z-30 hidden py-1.5 rounded-md bg-white border border-gray-100 w-full max-w-[140px]">
-                    <li>
-                      <Link
-                        href="#"
-                        className="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50"
-                      >
-                        Profile
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="#"
-                        className="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50"
-                      >
-                        Settings
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="#"
-                        className="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50"
-                      >
-                        Logout
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
               </div>
               <div className="overflow-hidden">
                 <table className="w-full min-w-[540px]">
@@ -760,32 +645,6 @@ const CreatorDashboard = () => {
                           >
                             <i className="ri-more-2-fill"></i>
                           </button>
-                          <ul className="dropdown-menu shadow-md shadow-black/5 z-30 hidden py-1.5 rounded-md bg-white border border-gray-100 w-full max-w-[140px]">
-                            <li>
-                              <Link
-                                href="#"
-                                className="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50"
-                              >
-                                Profile
-                              </Link>
-                            </li>
-                            <li>
-                              <Link
-                                href="#"
-                                className="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50"
-                              >
-                                Settings
-                              </Link>
-                            </li>
-                            <li>
-                              <Link
-                                href="#"
-                                className="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50"
-                              >
-                                Logout
-                              </Link>
-                            </li>
-                          </ul>
                         </div>
                       </td>
                     </tr>
@@ -810,49 +669,17 @@ const CreatorDashboard = () => {
                           17.45
                         </span>
                       </td>
-                      <td className="py-2 px-4 border-b border-b-gray-50">
-                        <div className="dropdown">
-                          <button
-                            type="button"
-                            className="dropdown-toggle text-gray-400 hover:text-gray-600 text-sm w-6 h-6 rounded flex items-center justify-center bg-gray-50"
-                          >
-                            <i className="ri-more-2-fill"></i>
-                          </button>
-                          <ul className="dropdown-menu shadow-md shadow-black/5 z-30 hidden py-1.5 rounded-md bg-white border border-gray-100 w-full max-w-[140px]">
-                            <li>
-                              <Link
-                                href="#"
-                                className="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50"
-                              >
-                                Profile
-                              </Link>
-                            </li>
-                            <li>
-                              <Link
-                                href="#"
-                                className="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50"
-                              >
-                                Settings
-                              </Link>
-                            </li>
-                            <li>
-                              <Link
-                                href="#"
-                                className="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50"
-                              >
-                                Logout
-                              </Link>
-                            </li>
-                          </ul>
-                        </div>
-                      </td>
+                      <td className="py-2 px-4 border-b border-b-gray-50"></td>
                     </tr>
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
-        </div>
+        </div>)}
+
+      {activeSection === 'packages' && (<ViewMyPackages />)}
+        
 
         {/* <!-- End Content --> */}
       </main>
