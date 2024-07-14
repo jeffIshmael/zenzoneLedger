@@ -5,19 +5,21 @@ import Header from "@/components/Header";
 import { useEffect } from "react";
 import { toast } from "sonner";
 
+
 export default function CreatorDetails() {
   const router = useRouter();
   const { id } = router.query;
-  const {isConnected, address} = useAccount();
+  const {isConnected } = useAccount();
   const { data } = useReadContract({
     address: contractAddress,
     abi: contractAbi,
     functionName: "getCreator",
-    args: [BigInt(Number(id))],
+    args: [id],
   });
   const { writeContractAsync } = useWriteContract();
 
   const creator = (data as Creator) || [];
+  // console.log(creator);
 
   interface Creator {
     bio: string;
@@ -34,17 +36,32 @@ export default function CreatorDetails() {
     walletAddress: string;
   }
 
-  const createdPackages = creator?.packagesCreated;
+  interface packageId{
+    id: number;
+  }
+  console.log(creator.walletAddress);
+  const address = creator.walletAddress;
+
+  const { data: packageIds } = useReadContract({
+    address: contractAddress,
+    abi: contractAbi,
+    functionName: "getCreatorPackages",
+    args: [address],
+  });
+
+
+  const createdPackages = (packageIds as packageId[]) || [];
+  console.log(createdPackages);
 
   const { data: packs } = useReadContract({
     address: contractAddress,
     abi: contractAbi,
     functionName: "getPackage",
-    args: [createdPackages],
+    args: [0],
   });
 
-  const packages = (packs as Package[]) || [];
-  interface Package {
+  const packdetails = (packs as Packdetails) || [];
+  interface Packdetails {
     packageId: number;
     name: string;
     price: number;
@@ -53,16 +70,18 @@ export default function CreatorDetails() {
     platform: string;
   }
 
+  console.log(packdetails);
+
   if (!id) {
     console.log("Happy");
   }
   useEffect(() => {
-    if (!packs) return;
-    console.log(packs);
-  }, [packs]);
+    if (!packdetails) return;
+    console.log(packdetails);
+  }, [packdetails]);
 
   console.log(creator);
-  console.log(createdPackages);
+  // console.log(createdPackages);
 
 
   async function Purchase() {   
@@ -79,7 +98,7 @@ export default function CreatorDetails() {
         abi: contractAbi,
         functionName: "purchasePackage",
         args: [
-          BigInt(Number((packs as any)?.[5] as string))         
+          BigInt(Number(packdetails[5]))         
         ],
       });
       if (hash) {
@@ -93,6 +112,31 @@ export default function CreatorDetails() {
       return;
     }
   }
+
+//   0
+// : 
+// 0n
+// 1
+// : 
+// "Indigo"
+// 2
+// : 
+// "instagram, facebook, tiktok"
+// 3
+// : 
+// "2 videos weekly\n1 photo daily"
+// 4
+// : 
+// 4n
+// 5
+// : 
+// 1n
+// 6
+// : 
+// "0x4821ced48Fb4456055c86E42587f61c1F39c6315"
+// 7
+// : 
+// []
 
   return (
     <div>
@@ -158,7 +202,7 @@ export default function CreatorDetails() {
           <div>
             <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:items-center md:gap-8">
-                {!packages ? (
+                {createdPackages.length === 0 ? (
                   <h1 className="text-black text-center font-medium lg:px-16">
                     No Packages yet
                   </h1>
@@ -172,14 +216,14 @@ export default function CreatorDetails() {
                       <p className="mt-2 sm:mt-4">
                         <strong className="text-3xl font-bold text-gray-900 sm:text-4xl">
                           {" "}
-                          {Number(packages[0]?.price)}{" "}
+                          {Number(packdetails[5])}{" "}
                         </strong>
 
                         <span className="text-base font-medium text-gray-700">cUSD </span>
                       </p>
                     </div>
 
-                    <h1 className="text-center text-lg font-normal mt-2">{packages[0]?.name}</h1>
+                    <h1 className="text-center text-lg font-normal mt-2">{packdetails[1]}</h1>
 
                     <ul className="mt-2 space-y-2">
                       <li className="flex items-center gap-1">
@@ -187,20 +231,20 @@ export default function CreatorDetails() {
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
                           viewBox="0 0 24 24"
-                          stroke-width="1.5"
+                          strokeWidth="1.5"
                           stroke="currentColor"
                           className="size-5 text-orange-700"
                         >
                           <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                             d="M4.5 12.75l6 6 9-13.5"
                           />
                         </svg>
 
                         <span className="text-gray-700">
                           {" "}
-                          {packages[0]?.description}{" "}
+                          {packdetails[3]}{" "}
                         </span>
                       </li>
 
@@ -209,19 +253,19 @@ export default function CreatorDetails() {
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
                           viewBox="0 0 24 24"
-                          stroke-width="1.5"
+                          strokeWidth="1.5"
                           stroke="currentColor"
                           className="size-5 text-orange-700"
                         >
                           <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                             d="M4.5 12.75l6 6 9-13.5"
                           />
                         </svg>
 
                         <span className="text-gray-700">
-                          {packages[0]?.platform}
+                          {packdetails[2]}
                         </span>
                       </li>
 
@@ -230,19 +274,19 @@ export default function CreatorDetails() {
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
                           viewBox="0 0 24 24"
-                          stroke-width="1.5"
+                          strokeWidth="1.5"
                           stroke="currentColor"
                           className="size-5 text-orange-700"
                         >
                           <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                             d="M4.5 12.75l6 6 9-13.5"
                           />
                         </svg>
 
                         <span className="text-gray-700">
-                          {Number(packages[0]?.duration)} days
+                          {Number(packdetails[4])} days
                         </span>
                       </li>
                     </ul>
