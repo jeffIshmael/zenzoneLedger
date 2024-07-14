@@ -43,6 +43,16 @@ export default function CreatorDetails() {
     args: [createdPackages],
   });
 
+  const packages = (packs as Package[]) || [];
+  interface Package {
+    packageId: number;
+    name: string;
+    price: number;
+    description: string;
+    duration: number;
+    platform: string;
+  }
+
   if (!id) {
     console.log("Happy");
   }
@@ -148,7 +158,7 @@ export default function CreatorDetails() {
           <div>
             <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:items-center md:gap-8">
-                {!packs ? (
+                {!packages ? (
                   <h1 className="text-black text-center font-medium lg:px-16">
                     No Packages yet
                   </h1>
@@ -162,14 +172,14 @@ export default function CreatorDetails() {
                       <p className="mt-2 sm:mt-4">
                         <strong className="text-3xl font-bold text-gray-900 sm:text-4xl">
                           {" "}
-                          {Number(packs?.[5])}{" "}
+                          {Number(packages[0]?.price)}{" "}
                         </strong>
 
                         <span className="text-base font-medium text-gray-700">cUSD </span>
                       </p>
                     </div>
 
-                    <h1 className="text-center text-lg font-normal mt-2">{packs?.[1]}</h1>
+                    <h1 className="text-center text-lg font-normal mt-2">{packages[0]?.name}</h1>
 
                     <ul className="mt-2 space-y-2">
                       <li className="flex items-center gap-1">
@@ -190,7 +200,7 @@ export default function CreatorDetails() {
 
                         <span className="text-gray-700">
                           {" "}
-                          {packs?.[2]}{" "}
+                          {packages[0]?.description}{" "}
                         </span>
                       </li>
 
@@ -211,7 +221,7 @@ export default function CreatorDetails() {
                         </svg>
 
                         <span className="text-gray-700">
-                          {packs?.[3]}
+                          {packages[0]?.platform}
                         </span>
                       </li>
 
@@ -232,7 +242,7 @@ export default function CreatorDetails() {
                         </svg>
 
                         <span className="text-gray-700">
-                          {Number(packs?.[4])} days
+                          {Number(packages[0]?.duration)} days
                         </span>
                       </li>
                     </ul>
