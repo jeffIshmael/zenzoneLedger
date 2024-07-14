@@ -141,13 +141,13 @@ const ViewMyPackages = () => {
               ):
               ( <tr>
                 <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
-                 {packages?.[1]}
+                 {packages?.[1].toString()}
                 </th>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
                   {Number(packages?.[5])} cUSD
                 </td>
                 <td className="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                {packages?.[3]}
+                {packages?.[3].toString()}
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                   <div className="inline-flex items-center rounded-md shadow-sm">
