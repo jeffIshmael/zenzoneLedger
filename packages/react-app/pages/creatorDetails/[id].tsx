@@ -63,26 +63,28 @@ export default function CreatorDetails() {
   }, [address, refetchPackageIds]);
 
   const createdPackages = (packageIds as { id: number }[]) || [];
+  const packageId = createdPackages[0]?.id || 0;
 
   const { refetch: refetchPackageDetails } = useReadContract({
     address: contractAddress,
     abi: contractAbi,
     functionName: "getPackage",
-    args: [],
+    args: [BigInt(packageId)],
      // disable automatic fetching
   });
 
   useEffect(() => {
     const fetchPackages = async () => {
       if (createdPackages.length === 0) return;
-      const packageId = createdPackages[0]?.id || 0;
+      
 
       // const packageId = createdPackages[0].id; // Assuming you want the first package
 
-      const { data } = await refetchPackageDetails({
-        options: { args: [BigInt(packageId)] },
+      const { data } = await refetchPackageDetails(
+        // {options: { args: [BigInt(packageId)] },
         // enabled: false,
-      });
+      // }
+    );
 
       setPackdetails(data as PackageDetails);
     };
