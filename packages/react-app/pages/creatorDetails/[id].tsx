@@ -2,24 +2,24 @@ import { useRouter } from "next/router";
 import { contractAddress, contractAbi } from "@/config/Contract";
 import { useReadContract, useWriteContract, useAccount } from "wagmi";
 import Header from "@/components/Header";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
-
 
 export default function CreatorDetails() {
   const router = useRouter();
   const { id } = router.query;
-  const {isConnected } = useAccount();
-  const { data } = useReadContract({
+  const { isConnected } = useAccount();
+
+  const { data: creatorData } = useReadContract({
     address: contractAddress,
     abi: contractAbi,
     functionName: "getCreator",
     args: [id],
   });
+
   const { writeContractAsync } = useWriteContract();
 
-  const creator = (data as Creator) || [];
-  // console.log(creator);
+  const creator = (creatorData as Creator) || {};
 
   interface Creator {
     bio: string;
@@ -29,114 +29,93 @@ export default function CreatorDetails() {
     id: number;
     instagramLink: string;
     linkedinLink: string;
-    packagesCreated: [];
+    packagesCreated: number[];
     tiktokLink: string;
     twitterLink: string;
     username: string;
     walletAddress: string;
   }
 
-  interface packageId{
-    id: number;
-  }
-  console.log(creator.walletAddress);
-  const address = creator.walletAddress;
-
-  const { data: packageIds } = useReadContract({
-    address: contractAddress,
-    abi: contractAbi,
-    functionName: "getCreatorPackages",
-    args: [address],
-  });
-
-
-  const createdPackages = (packageIds as packageId[]) || [];
-  console.log(createdPackages);
-
-  const { data: packs } = useReadContract({
-    address: contractAddress,
-    abi: contractAbi,
-    functionName: "getPackage",
-    args: [0],
-  });
-
-  const packdetails = (packs as Packdetails) || [];
-  interface Packdetails {
-    packageId: number;
+  interface PackageDetails {
+    packageId: bigint;
     name: string;
-    price: number;
+    price: bigint;
     description: string;
     duration: number;
     platform: string;
   }
 
-  console.log(packdetails);
+  const [packdetails, setPackdetails] = useState<PackageDetails | null>(null);
+  const address = creator.walletAddress;
 
-  if (!id) {
-    console.log("Happy");
-  }
+  const { data: packageIds, refetch: refetchPackageIds } = useReadContract({
+    address: contractAddress,
+    abi: contractAbi,
+    functionName: "getCreatorPackages",
+    args: [address],
+    // enabled: false, // disable automatic fetching
+  });
+
   useEffect(() => {
-    if (!packdetails) return;
-    console.log(packdetails);
-  }, [packdetails]);
+    if (address) {
+      refetchPackageIds();
+    }
+  }, [address, refetchPackageIds]);
 
-  console.log(creator);
-  // console.log(createdPackages);
+  const createdPackages = (packageIds as { id: number }[]) || [];
 
+  const { refetch: refetchPackageDetails } = useReadContract({
+    address: contractAddress,
+    abi: contractAbi,
+    functionName: "getPackage",
+    args: [],
+     // disable automatic fetching
+  });
 
-  async function Purchase() {   
+  useEffect(() => {
+    const fetchPackages = async () => {
+      if (createdPackages.length === 0) return;
+      const packageId = createdPackages[0]?.id || 0;
+
+      // const packageId = createdPackages[0].id; // Assuming you want the first package
+
+      const { data } = await refetchPackageDetails({
+        options: { args: [BigInt(packageId)] },
+        // enabled: false,
+      });
+
+      setPackdetails(data as PackageDetails);
+    };
+
+    fetchPackages();
+  }, [createdPackages, refetchPackageDetails]);
+
+  async function Purchase() {
     if (!isConnected) {
-      console.log(address);
       toast.error("Please connect wallet");
-      console.log("Please connect wallet");
       return;
     }
-    
+
+    if (!packdetails) {
+      toast.error("Package details not available");
+      return;
+    }
+
     try {
       const hash = await writeContractAsync({
         address: contractAddress,
         abi: contractAbi,
         functionName: "purchasePackage",
-        args: [
-          BigInt(Number(packdetails[5]))         
-        ],
+        args: [packdetails.packageId],
       });
+
       if (hash) {
-        console.log(hash);
-        toast("successfully purchased");
-        
+        toast.success("Successfully purchased");
       }
     } catch (e: any) {
-      console.log(e);
       toast.error("Failed to purchase, try again.");
-      return;
     }
   }
-
-//   0
-// : 
-// 0n
-// 1
-// : 
-// "Indigo"
-// 2
-// : 
-// "instagram, facebook, tiktok"
-// 3
-// : 
-// "2 videos weekly\n1 photo daily"
-// 4
-// : 
-// 4n
-// 5
-// : 
-// 1n
-// 6
-// : 
-// "0x4821ced48Fb4456055c86E42587f61c1F39c6315"
-// 7
-// : 
-// []
 
   return (
     <div>
@@ -216,14 +195,14 @@ export default function CreatorDetails() {
                       <p className="mt-2 sm:mt-4">
                         <strong className="text-3xl font-bold text-gray-900 sm:text-4xl">
                           {" "}
-                          {Number(packdetails[5])}{" "}
+                          {packdetails ? Number(packdetails.price) : 0}{" "}
                         </strong>
 
                         <span className="text-base font-medium text-gray-700">cUSD </span>
                       </p>
                     </div>
 
-                    <h1 className="text-center text-lg font-normal mt-2">{packdetails[1]}</h1>
+                    <h1 className="text-center text-lg font-normal mt-2">{packdetails?.name}</h1>
 
                     <ul className="mt-2 space-y-2">
                       <li className="flex items-center gap-1">
@@ -244,7 +223,7 @@ export default function CreatorDetails() {
 
                         <span className="text-gray-700">
                           {" "}
-                          {packdetails[3]}{" "}
+                          {packdetails?.description}{" "}
                         </span>
                       </li>
 
@@ -265,7 +244,7 @@ export default function CreatorDetails() {
                         </svg>
 
                         <span className="text-gray-700">
-                          {packdetails[2]}
+                          {packdetails?.platform}
                         </span>
                       </li>
 
@@ -286,7 +265,7 @@ export default function CreatorDetails() {
                         </svg>
 
                         <span className="text-gray-700">
-                          {Number(packdetails[4])} days
+                          {Number(packdetails?.platform)} days
                         </span>
                       </li>
                     </ul>
