@@ -69,7 +69,7 @@ export default function CreatorDetails() {
         abi: contractAbi,
         functionName: "purchasePackage",
         args: [
-          BigInt(Number(packs?.[5]))         
+          BigInt(Number((packs as any)?.[5] as string))         
         ],
       });
       if (hash) {
