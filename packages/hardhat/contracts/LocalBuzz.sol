@@ -241,31 +241,6 @@ contract LocalBuzz is ERC20{
         }
     }
 
-//     // Function to get all clients of a creator
-//     function getCreatorClients(address _creatorAddress) public view returns (address[] memory) {
-//     // Get the list of package IDs created by the creator
-//     uint[] memory packs = creatornAdd[_creatorAddress].packagesCreated;
-    
-//     // Initialize a temporary dynamic array in memory to collect all buyers
-//     uint totalBuyers = 0;
-//     for (uint i = 0; i < packs.length; i++) {
-//         totalBuyers += packagenId[packs[i]].buyers.length;
-//     }
-    
-//     address[] memory allClients = new address[](totalBuyers);
-//     uint currentIndex = 0;
-    
-//     // Loop through each package and add its buyers to the allClients array
-//     for (uint i = 0; i < packs.length; i++) {
-//         address[] memory buyers = packagenId[packs[i]].buyers;
-//         for (uint j = 0; j < buyers.length; j++) {
-//             allClients[currentIndex] = buyers[j];
-//             currentIndex++;
-//         }
-//     }
-    
-//     return allClients;
-// }
 
     //function to check if an address is a client
     function isClient(address _address) public view returns (bool) {

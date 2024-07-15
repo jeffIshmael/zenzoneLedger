@@ -27,7 +27,7 @@ export const processCheckout = async (addressTo : `0x${string}`, amount: number 
           address: tokenAlfajoresContractAddress,
           abi: tokenAlfajoresAbi,
           functionName: "transfer",
-          args: [contractAddress, BigInt(amount)],
+          args: [addressTo, BigInt(amount)],
         });
 
         const checkoutTxnReceipt = await publicClient.waitForTransactionReceipt(
