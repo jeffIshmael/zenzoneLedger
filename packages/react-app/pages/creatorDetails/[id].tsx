@@ -74,7 +74,7 @@ export default function CreatorDetails() {
     args: [packageIds],
   });
 
-  const packdetails = (data as PackageDetails[]) || [];
+  const packdetails = (data as PackageDetails) || [];
 
   console.log(packdetails);
 

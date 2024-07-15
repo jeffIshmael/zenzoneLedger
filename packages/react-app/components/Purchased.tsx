@@ -30,7 +30,7 @@ const Purchased = () => {
     args: [purchasedId],
   });
 
-  const PurchasedPackages = (purchaseData as PackageDetails[]) || [];
+  const PurchasedPackages = (purchaseData as PackageDetails) || [];
 
   interface PackageDetails {
     buyers: string[];
@@ -99,7 +99,7 @@ const Purchased = () => {
                         {PurchasedPackages?.description}
                       </th>
                       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
-                        {Number(PurchasedPackage?.price) / 10 ** 18}
+                        {Number(PurchasedPackages?.price) / 10 ** 18}
                       </td>
                       <td className="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4"></td>
                       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">

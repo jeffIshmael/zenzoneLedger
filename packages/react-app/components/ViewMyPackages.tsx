@@ -28,7 +28,7 @@ const ViewMyPackages = () => {
 
   console.log(data);
 
-  const packageDetails = (data as PackageDetails[]) || [];
+  const packageDetails = (data as PackageDetails) || [];
 
   interface PackageDetails {
     platform: string;
