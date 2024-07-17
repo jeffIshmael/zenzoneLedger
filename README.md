@@ -1,13 +1,20 @@
 <div align= "center">
-  ![app logo](../../Downloads/screenshot_from_2024_07_10_22_37_50_Q2i_icon.ico)
-  
+   <a href="https://local-buzz-plum.vercel.app/">
+      <img alt="logo" src="https://ipfs.io/ipfs/QmbWNUZ5oS2NEbnRb1MBwDNBgbyXy5LPazoD5PyHjeuyvP" />
+    </a>
   # LocalBuzz
 </div>
 
-![alt text](photo_5812299982806565262_y.jpg)
-![alt text](photo_5812299982806565259_y.jpg)
-![alt text](photo_5812299982806565260_y.jpg)
-![alt text](11.jpg)
+<div align="center">
+    <img src="photo_5812299982806565262_y.jpg" alt="Photo 1" width="300" />
+    <img src="photo_5812299982806565259_y.jpg" alt="Photo 2" width="300" />
+    <img src="3.jpg" alt="Photo 3" width="300" />
+</div>
+
+<div align="center">
+    <img src="11.jpg" alt="Photo 4" width="300" />
+    <img src="photo_5812299982806565260_y.jpg" alt="Photo 5" width="300" />
+</div>
 
 ## Overview
 
@@ -17,15 +24,14 @@ LocalBuzz is a Web3 platform designed to connect micro-influencers with business
 
 LocalBuzz aims to bridge the gap between businesses and micro-influencers, enabling cost-effective and highly targeted marketing campaigns. Our mission is to provide a seamless connection between businesses and micro-influencers, promoting community engagement and personalized advertising.
 
-
 ## Getting Started
 
-<a href="https://local-buzz-plum.vercel.app/">
+- <a href="https://local-buzz-plum.vercel.app/">
     Visit website
   </a>
-<a href="https://youtu.be/YNLyCWC1Uvs">
-  Watch Demo Video
-</a>
+- <a href="https://youtu.be/YNLyCWC1Uvs">
+    Watch Demo Video
+  </a>
 
 ### Prerequisites
 
@@ -35,10 +41,9 @@ LocalBuzz aims to bridge the gap between businesses and micro-influencers, enabl
 ### Installation
 
 1. Visit the LocalBuzz website.<a href="https://local-buzz-plum.vercel.app/">
-    Here
-  </a>
+   Here
+   </a>
 2. Register as an influencer or a client.
-
 
 ### Using LocalBuzz
 
@@ -74,9 +79,10 @@ LocalBuzz aims to bridge the gap between businesses and micro-influencers, enabl
 
 - Users earn 5% of each package purchased as Buzz Tokens,which can be redeemed for cUSD.
 
-
 ## Feedback and Support
 
-We value your feedback to help improve LocalBuzz. For any questions, issues, or suggestions, please contact us at jeffianmuchiri24@gmail.com.
+We value your feedback to help improve LocalBuzz. For any questions, issues, or suggestions, please contact us at <a href="jeffianmuchiri24@gmail.com">
+@BuzzDevs
+</a>.
 
 Thank you for choosing LocalBuzz to connect with micro-influencers and enhance your marketing campaigns!
