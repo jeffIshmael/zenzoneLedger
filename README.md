@@ -1,19 +1,17 @@
 <div align= "center">
-   <a href="https://local-buzz-plum.vercel.app/">
-      <img alt="logo" src="https://ipfs.io/ipfs/QmbWNUZ5oS2NEbnRb1MBwDNBgbyXy5LPazoD5PyHjeuyvP" />
-    </a>
-  # LocalBuzz
+<a href="https://local-buzz-plum.vercel.app/">
+  <img alt="logo" src="https://ipfs.io/ipfs/QmbWNUZ5oS2NEbnRb1MBwDNBgbyXy5LPazoD5PyHjeuyvP" />
+</a>
+<br></br>
+<h1>Local Buzz</h1>
 </div>
 
 <div align="center">
-    <img src="photo_5812299982806565262_y.jpg" alt="Photo 1" width="300" />
-    <img src="photo_5812299982806565259_y.jpg" alt="Photo 2" width="300" />
-    <img src="3.jpg" alt="Photo 3" width="300" />
-</div>
-
-<div align="center">
-    <img src="11.jpg" alt="Photo 4" width="300" />
-    <img src="photo_5812299982806565260_y.jpg" alt="Photo 5" width="300" />
+    <img src="photo_5812299982806565262_y.jpg" alt="Photo 1" width="200" />
+    <img src="photo_5812299982806565259_y.jpg" alt="Photo 2" width="200" />
+    <img src="3.jpg" alt="Photo 3" width="200" />
+    <img src="11.jpg" alt="Photo 4" width="200" />
+    <img src="photo_5812299982806565260_y.jpg" alt="Photo 5" width="200" />
 </div>
 
 ## Overview
