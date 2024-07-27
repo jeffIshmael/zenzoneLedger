@@ -41,7 +41,7 @@ export default function Header() {
 
 
   return (
-    <Disclosure as="nav" className="bg-gray-400 bg-opacity-50 ">
+    <Disclosure as="nav" >
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -57,32 +57,24 @@ export default function Header() {
                   )}
                 </Disclosure.Button>
               </div>
-              <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex flex-shrink-0 items-center">
-                  <Link
-                    href="/"
-                    className="flex items-center  border-b-gray-800"
-                  >
-                    <h2 className="font-bold text-3xl">
-                      Local{" "}
-                      <span className="bg-[#f84525] text-white px-2 rounded-md">
-                        Buzz
-                      </span>
-                    </h2>
-                  </Link>
-                </div>
+              <div className="flex flex-1 items-center justify-center  p-2 sm:items-stretch sm:justify-start">
+                
+                
+                  <img
+                    src={"/static/images/logo.jpg"}
+                    width={150}
+                    height={150}
+                    alt="logo"
+                    className="cursor-pointer rounded-lg"
+                  />
+                
+                
                 <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
                   <Link
                     href="/"
                     className="inline-flex items-center  px-1 pt-1 text-sm font-medium text-gray-900"
                   >
                     Home
-                  </Link>
-                  <Link
-                    href="/explore"
-                    className="inline-flex items-center  px-1 pt-1 text-sm font-medium text-gray-900"
-                  >
-                    Explore
                   </Link>
                   {isConnected && isRegistered ? (
                     <Link
@@ -92,9 +84,30 @@ export default function Header() {
                       Dashboard
                     </Link>
                   ): null}
+                  <Link
+                    href="/"
+                    className="inline-flex items-center  px-1 pt-1 text-sm font-medium text-gray-900"
+                  >
+                    Proposed offsets
+                  </Link>
+                  <Link
+                    href="/"
+                    className="inline-flex items-center  px-1 pt-1 text-sm font-medium text-gray-900"
+                  >
+                    Approved offsets
+                  </Link>
+                  <Link
+                    href="/"
+                    className="inline-flex items-center  px-1 pt-1 text-sm font-medium text-gray-900"
+                  >
+                    About
+                  </Link>
+
+
+                  
                 </div>
               </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 ">
                 {!hideConnectBtn && (
                   <ConnectButton
                     showBalance={{
@@ -125,10 +138,17 @@ export default function Header() {
               </Disclosure.Button>)}
               <Disclosure.Button
                 as="a"
-                href="/explore"
+                href="/"
                 className="block border-l-4 border-black py-2 pl-3 pr-4 text-base font-medium text-black"
               >
-                Explore
+                Proposed offsets
+              </Disclosure.Button>
+              <Disclosure.Button
+                as="a"
+                href="/"
+                className="block border-l-4 border-black py-2 pl-3 pr-4 text-base font-medium text-black"
+              >
+                Approved offsets
               </Disclosure.Button>
               {/* Add here your custom menu elements */}
             </div>

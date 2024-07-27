@@ -1,5 +1,5 @@
 import { createPublicClient, createWalletClient, custom } from "viem";
-import {  celo } from "viem/chains";
+import { celoAlfajores } from "viem/chains";
 import {
   tokencUSDAbi,
   tokencUSDContractAddress,
@@ -11,18 +11,19 @@ import { toast } from "sonner";
 export const processCheckout = async ( amount: number ) => {
     if (window.ethereum) {
       const privateClient = createWalletClient({
-        chain: celo,
+        chain: celoAlfajores,
         transport: custom(window.ethereum),
       });
 
       const publicClient = createPublicClient({
-        chain: celo,
+        chain: celoAlfajores,
         transport: custom(window.ethereum),
       });
 
       const [address] = await privateClient.getAddresses();
 
       try {
+        console.log("Im here");
         const checkoutTxnHash = await privateClient.writeContract({
           account: address,
           address: tokencUSDContractAddress,

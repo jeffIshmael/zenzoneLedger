@@ -16,14 +16,14 @@ async function main() {
   
   // const address = "0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1";
 
-  const Localbuzz = await hre.ethers.getContractFactory("LocalBuzz");
-  const localbuzz = await Localbuzz.deploy();
+  const Zenzone = await hre.ethers.getContractFactory("zenzone");
+  const zenZone = await Zenzone.deploy();
 
   console.log(`Done`);
 
-  await localbuzz.deployed();
+  await zenZone.deployed();
 
-  console.log(`Contract deployed to ${localbuzz.address}`);
+  console.log(`Contract deployed to ${zenZone.address}`);
 }
 
 // We recommend this pattern to be able to use async/await everywhere

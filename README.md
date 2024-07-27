@@ -1,82 +1,60 @@
-<div align= "center">
-<h1>Local Buzz</h1>
-</div>
+### Zenzone Ledger
 
-<div align="center">
-    <img src="photo_5812299982806565262_y.jpg" alt="Photo 1" width="150" />
-    <img src="photo_5812299982806565259_y.jpg" alt="Photo 2" width="150" />
-    <img src="3.jpg" alt="Photo 3" width="150" />
-    <img src="11.jpg" alt="Photo 4" width="150" />
-    <img src="photo_5812299982806565260_y.jpg" alt="Photo 5" width="150" />
-</div>
+Zenzone is a blockchain project built on the Celo platform, aiming to ensure transparency in the carbon credits market. Our platform allows buyers and offsetters to register, enabling buyers to purchase carbon credits directly. Offsetters can submit their projects for validation, and upon approval, they receive funding for their initiatives to offset carbon emissions.
+![alt text](<Screenshot from 2024-06-29 08-39-19.png>)
+![alt text](<Screenshot from 2024-06-29 08-40-19.png>)
 
-## Overview
+## Table of Contents
 
-LocalBuzz is a Web3 platform designed to connect micro-influencers with businesses of all sizes. LocalBuzz offers a streamlined and effective way for businesses to leverage the power of community-focused advertising through micro-influencers. Our platform ensures transparency, security, and efficiency by utilizing blockchain technology.
+- [Introduction](#introduction)
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-## Who We Are
+## Introduction
 
-LocalBuzz aims to bridge the gap between businesses and micro-influencers, enabling cost-effective and highly targeted marketing campaigns. Our mission is to provide a seamless connection between businesses and micro-influencers, promoting community engagement and personalized advertising.
+With growing concerns over climate change, there is an urgent need for transparent and efficient carbon credit markets. Zenzone leverages blockchain technology to provide a trustworthy platform where carbon credits can be bought and sold with complete transparency. Our platform ensures that every transaction is securely recorded on the blockchain, providing an immutable record that can be trusted by all participants.
 
-## Getting Started
+## Features
 
-- <a href="https://local-buzz-plum.vercel.app/">
-    Visit website
-  </a>
-- <a href="https://youtu.be/YNLyCWC1Uvs">
-    Watch Demo Video
-  </a>
+- **Transparent Transactions:** All carbon credit transactions are recorded on the Celo blockchain, ensuring transparency and trust.
+- **Registration for Buyers and Offsetters:** Both buyers and offsetters can easily register on the platform.
+- **Project Submission and Validation:** Offsetters can submit their projects for approval by validators, ensuring that only credible projects receive funding.
+- **Funding for Approved Projects:** Once a project is approved by validators, the offsetter receives the necessary funding to implement their carbon offset initiatives.
 
-### Prerequisites
 
-- Ensure you have a modern web browser.
-- An internet connection.
+### Interacting with the Platform
 
-### Installation
+1. **Register as a Buyer or Offsetter:** Sign up on the platform to start participating in the carbon credit market.
+![alt text](<Screenshot from 2024-06-29 08-45-22.png>)
+![alt text](<Screenshot from 2024-06-29 08-45-49.png>)
+2. **Buy Carbon Credits:** Buyers can purchase carbon credits directly through the platform.
+3. **Submit Offset Projects:** Offsetters can submit their projects detailing how they plan to offset carbon emissions.
+4. **Project Validation:** Validators review and approve credible projects.
+5. **Receive Funding:** Approved projects receive funding to implement their carbon offset initiatives.
 
-1. Visit the LocalBuzz website.<a href="https://local-buzz-plum.vercel.app/">
-   Here
-   </a>
-2. Register as an influencer or a client.
+## Contributing
 
-### Using LocalBuzz
+We welcome contributions from the community. To contribute to Zenzone, follow these steps:
 
-1. **For Influencers:**
-   - Create your service packages.
-   - Set your prices and describe your services.
-   - Publish your packages for businesses to see.
-2. **For Businesses/individuals:**
-   - Browse available influencer packages.
-   - Select and purchase the package that best fits your marketing needs.
-   - Collaborate with influencers to promote your products or services.
+1. Fork the repository.
+2. Create a new branch for your feature or bugfix.
+3. Commit your changes and push them to your fork.
+4. Open a pull request with a detailed description of your changes.
 
-### Redeeming Buzz Tokens
+Please make sure your code adheres to our coding standards and includes appropriate tests.
 
-- Accumulate Buzz Tokens by purchasing packages.
-- Redeem your Buzz Tokens for cUSD through your LocalBuzz account.
+## License
 
-## Project Workflow
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
-### Registration
+## Contact
 
-- Users register as either an influencer or a client.
+For any questions or inquiries, please contact us at [jeff@zenzone.com](mailto:jeffishmael141@gmail.com).
 
-### Influencer Package Creation
+---
 
-- Influencers create packages detailing their services and pricing.
-
-### Client Purchase
-
-- Clients interested in a package can purchase it directly on the platform, indicating payment for the service.
-
-### Rewards
-
-- Users earn 5% of each package purchased as Buzz Tokens,which can be redeemed for cUSD.
-
-## Feedback and Support
-
-We value your feedback to help improve LocalBuzz. For any questions, issues, or suggestions, please contact us at <a href="jeffianmuchiri24@gmail.com">
-@BuzzDevs
-</a>.
-
-Thank you for choosing LocalBuzz to connect with micro-influencers and enhance your marketing campaigns!
+By using Zenzone, you are contributing to a more transparent and efficient carbon credit market, helping to fight climate change and support sustainable development. Thank you for being a part of our journey!
