@@ -34,7 +34,7 @@ export default function Home() {
 
       <div className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8">
         <div className="max-w-xl text-center ltr:sm:text-left rtl:sm:text-right">
-          <h1 className="text-3xl font-extrabold sm:text-5xl">
+          <h1 className="text-3xl font-extrabold sm:text-5xl text-slate-200">
             ZenZone
             <strong className="block font-extrabold text-teal-700">
               {" "}
@@ -42,7 +42,7 @@ export default function Home() {
             </strong>
           </h1>
 
-          <p className="mt-4 max-w-lg sm:text-xl/relaxed">
+          <p className="mt-4 max-w-lg sm:text-xl/relaxed text-slate-200">
             Harnessing the power of Blockchain to bring transparency and
             efficiency to the carbon credit market. Offset your emissions with
             ease.
@@ -81,7 +81,7 @@ export default function Home() {
 
             <Link
               href="#"
-              className="mt-8 inline-block rounded bg-indigo-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-yellow-400"
+              className="mt-8 inline-block rounded bg-teal-600  px-12 py-3 text-sm font-medium text-white transition hover:bg-teal-600  focus:outline-none focus:ring focus:ring-yellow-400"
             >
               Get Started Today
             </Link>
@@ -171,7 +171,7 @@ export default function Home() {
 
           <Link
             href="#"
-            className="mt-8 inline-block rounded-full border border-indigo-600 px-12 py-3 text-sm font-medium text-indigo-600 hover:bg-indigo-600 hover:text-white focus:outline-none focus:ring active:bg-indigo-500"
+            className="mt-8 inline-block rounded-full border-teal-600 px-12 py-3 text-sm font-medium text-teal-600  hover:bg-teal-600  hover:text-white focus:outline-none focus:ring active:bg-teal-600 "
           >
             Get Started
           </Link>

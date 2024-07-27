@@ -233,7 +233,7 @@ emit offsetterRegistered(_offsetterId, _compName, _regPin, _category, _offSetCat
 }
 
 //fuction to make an offset proposal
-function makeOffsetProposal( string memory _category,string memory _description,uint _estAmount) public {
+function makeOffsetProposal( string memory _category,string memory _description,string memory _ipfs,uint _estAmount) public {
 require(registeredOffsetter(msg.sender), "Please register as an offsetter first");
 uint _proposalId = totalOffsetProps;
 offsetProposal memory newProposal = offsetProposal({
@@ -242,7 +242,7 @@ category: _category,
 description: _description,
 estAmount: _estAmount,
 timestamp: block.timestamp,
-ipfsHash: "",
+ipfsHash: _ipfs,
 offsetterAdd: msg.sender,
 approved: false
 });
@@ -250,7 +250,7 @@ offSetProposalnId[_proposalId]= newProposal;
 offSetProposalAddress[msg.sender]= newProposal;
 offsetProposals.push(newProposal);
 totalOffsetProps++;
-emit offsetProposalCreated(_proposalId, _category, _description, _estAmount, block.timestamp, "", msg.sender, false);
+emit offsetProposalCreated(_proposalId, _category, _description, _estAmount, block.timestamp, _ipfs, msg.sender, false);
 }
 
 //function to register validator
@@ -286,6 +286,7 @@ function buyCarbonCredits(uint _estAmount) public payable {
     });
     boughtCreditsId[totalProposals]= newCredit;
     boughtCreditsAddress[msg.sender]= newCredit;
+    boughtCredits.push(newCredit);
     totalProposals++;
     emit boughtCreditCreated(totalProposals, _estAmount, " ",block.timestamp, msg.sender);
 }
@@ -297,7 +298,7 @@ function getCarbz(uint _amount) public {
 }
 
 //function to get Carbon Credits from address
-function getCarbonCredits( address _myadd) public view returns(boughtCredit memory){
+function getCarbonCredits( address _myadd) public view returns(boughtCredit[] memory){
     return boughtCreditsAddress[_myadd]; 
 }
 
