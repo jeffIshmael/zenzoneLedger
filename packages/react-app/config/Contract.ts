@@ -1,6 +1,6 @@
-export const contractAddress = "0x010F5C7796D9d8aaAb7A0cb46A8795c8940eD4cd";
+export const contractAddress = "0x992810B6Ee63717a9C0295717754F46D22e29a63";
 
-export const contractAbi = [
+export const contractAbi =  [
   {
     "inputs": [],
     "stateMutability": "nonpayable",
@@ -944,6 +944,67 @@ export const contractAbi = [
     "inputs": [
       {
         "internalType": "address",
+        "name": "_myadd",
+        "type": "address"
+      }
+    ],
+    "name": "getProposal",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "proposalId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "category",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "estAmount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "ipfsHash",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "offsetterAdd",
+            "type": "address"
+          },
+          {
+            "internalType": "bool",
+            "name": "approved",
+            "type": "bool"
+          }
+        ],
+        "internalType": "struct zenzone.offsetProposal",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
         "name": "_myaddress",
         "type": "address"
       }
@@ -1027,6 +1088,11 @@ export const contractAbi = [
       {
         "internalType": "string",
         "name": "_description",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_ipfs",
         "type": "string"
       },
       {

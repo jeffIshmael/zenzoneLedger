@@ -298,13 +298,18 @@ function getCarbz(uint _amount) public {
 }
 
 //function to get Carbon Credits from address
-function getCarbonCredits( address _myadd) public view returns(boughtCredit[] memory){
+function getCarbonCredits( address _myadd) public view returns(boughtCredit memory){
     return boughtCreditsAddress[_myadd]; 
 }
 
 //function to get all offset Proposals
 function getOffsetProposals() public view returns(offsetProposal[] memory){
     return offsetProposals;
+}
+
+//function to get proposal from address
+function getProposal( address _myadd) public view returns(offsetProposal memory){
+    return offSetProposalAddress[_myadd];
 }
 
 
