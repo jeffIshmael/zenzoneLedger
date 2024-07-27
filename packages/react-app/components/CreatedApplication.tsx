@@ -73,7 +73,7 @@ const CreatedApplication = () => {
             {isPending ? (
               <div>Fetching..</div>
             ) : (
-              <div className="flex flex-col p-4 shadow-md rounded-xl bg-gray-800 text-white w-full">
+              <div className="flex flex-col p-4 shadow-md rounded-xl bg-gray-800 text-white w-fit">
                 <div className="flex justify-between items-center mb-2">
                   <div className="text-sm">
                     <small>
@@ -89,7 +89,7 @@ const CreatedApplication = () => {
                       <span className="text-pretty">{FormattedDate}</span>
                     </small>
                   </div>
-                  <div>
+                  <div className="mt-4">
                     {result.approved === false ? (
                       <p className="text-gray-400">Not Approved</p>
                     ) : (

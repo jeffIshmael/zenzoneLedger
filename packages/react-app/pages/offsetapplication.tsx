@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, { useRef, useState } from "react";
-import { PINATA_JWT } from "@/IPFS/Pinata";
+// import { PINATA_JWT } from "@/IPFS/Pinata";
 import { contractAddress, contractAbi } from "../config/Contract";
 import { useWriteContract, useAccount, useConnect } from "wagmi";
 import { useRouter } from "next/navigation";
@@ -16,7 +16,7 @@ const OffsetApplication = () => {
   const { address, isConnected } = useAccount();
   const router = useRouter();
 
-  const JWT = PINATA_JWT;
+  const JWT = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiI0OGRhNzE2MC03NTc2LTRmNWEtYTc0Ny0wODNkMGI1NjMxZjMiLCJlbWFpbCI6ImplZmZpc2htYWVsMTQxQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwaW5fcG9saWN5Ijp7InJlZ2lvbnMiOlt7ImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxLCJpZCI6IkZSQTEifSx7ImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxLCJpZCI6Ik5ZQzEifV0sInZlcnNpb24iOjF9LCJtZmFfZW5hYmxlZCI6ZmFsc2UsInN0YXR1cyI6IkFDVElWRSJ9LCJhdXRoZW50aWNhdGlvblR5cGUiOiJzY29wZWRLZXkiLCJzY29wZWRLZXlLZXkiOiJkOGU1NjI1ODhjOTI2OTgyM2QxZiIsInNjb3BlZEtleVNlY3JldCI6IjY4MjZlMDU2ODdiZmJmMjVjMTU5NGE4OTg0NjQ0NDE4YjRlOTdmYjhiNGExY2VhN2QwOTYzNjcxMmUwZTRiNTkiLCJleHAiOjE3NTM1ODAwODF9.IDS83Co8Y0izBh0WU3yHEKiOv55GBrVaKE0iB_-x1sI";
 //   QmVEcc3od4NiCttLWbxvwTyMUPwTkYZ5MRGUBGa4xFPQ8m
 
   const uploadFile = async (fileToUpload: any) => {
