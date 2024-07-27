@@ -74,9 +74,9 @@ export default function Home() {
             <h2 className="text-3xl font-bold sm:text-4xl">What we do</h2>
 
             <p className="mt-4 text-gray-500">
-              "ZenZone Ledger: A Web3 startup ensuring transparent buying and
+            &quot;ZenZone Ledger: A Web3 startup ensuring transparent buying and
               selling of carbon credits, making climate action simple, secure,
-              and effective."
+              and effective.&quot;
             </p>
 
             <Link

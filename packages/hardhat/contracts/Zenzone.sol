@@ -248,6 +248,7 @@ approved: false
 });
 offSetProposalnId[_proposalId]= newProposal;
 offSetProposalAddress[msg.sender]= newProposal;
+offsetProposals.push(newProposal);
 totalOffsetProps++;
 emit offsetProposalCreated(_proposalId, _category, _description, _estAmount, block.timestamp, "", msg.sender, false);
 }
