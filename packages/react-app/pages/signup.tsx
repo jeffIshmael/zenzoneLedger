@@ -1,15 +1,16 @@
-
-import {contractAddress, contractAbi} from "../config/Contract"
+import { contractAddress, contractAbi } from "../config/Contract";
 import { useAccount, useWriteContract } from "wagmi";
 import { useRouter } from "next/navigation";
 import { Toaster, toast } from "sonner";
 import React, { useState, useRef } from "react";
 import Link from "next/link";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 const SignUp = () => {
   const { address, isConnected } = useAccount();
   const router = useRouter();
-  const { writeContractAsync, isPending, isSuccess, error } = useWriteContract();
+  const { writeContractAsync, isPending, isSuccess, error } =
+    useWriteContract();
 
   async function submitForm(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -21,7 +22,7 @@ const SignUp = () => {
     const formData = new FormData(e.target as HTMLFormElement);
     const data = Object.fromEntries(formData.entries());
     console.log(data);
-    console.log (address);
+    console.log(address);
 
     try {
       const hash = await writeContractAsync({
@@ -42,7 +43,7 @@ const SignUp = () => {
         toast("Registration Successful");
         router.push("/");
       }
-    } catch (error) {  
+    } catch (error) {
       console.log(error);
     }
   }
@@ -132,7 +133,7 @@ const SignUp = () => {
                 </label>
 
                 <input
-                  type= "number"
+                  type="number"
                   id="RegNo"
                   name="regNo"
                   required
@@ -239,7 +240,7 @@ const SignUp = () => {
                   type="submit"
                   disabled={isPending}
                   className={`inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500 ${
-                    isPending ? 'opacity-50 cursor-not-allowed' : ''
+                    isPending ? "opacity-50 cursor-not-allowed" : ""
                   }`}
                 >
                   {isPending ? (
@@ -264,7 +265,7 @@ const SignUp = () => {
                       ></path>
                     </svg>
                   ) : (
-                    'Submit'
+                    "Submit"
                   )}
                 </button>
               </div>

@@ -10,7 +10,7 @@ import { contractAbi, contractAddress } from "@/config/Contract";
 export default function Header() {
   const [hideConnectBtn, setHideConnectBtn] = useState(false);
   const { connect } = useConnect();
-  const { isConnected , address} = useAccount();
+  const { isConnected, address } = useAccount();
   const [isRegistered, setIsRegistered] = useState(false);
 
   const { data, refetch } = useReadContract({
@@ -20,8 +20,7 @@ export default function Header() {
     args: [address],
   });
 
-  const registered = (data as boolean);
-
+  const registered = data as boolean;
 
   useEffect(() => {
     if (window.ethereum && window.ethereum.isMiniPay) {
@@ -32,16 +31,16 @@ export default function Header() {
 
   useEffect(() => {
     if (!data) {
-      async () =>{
+      async () => {
         await refetch();
         setIsRegistered(registered);
-      }
-    } setIsRegistered(registered);
+      };
+    }
+    setIsRegistered(registered);
   }, [data]);
 
-
   return (
-    <Disclosure as="nav" >
+    <Disclosure as="nav">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -58,17 +57,14 @@ export default function Header() {
                 </Disclosure.Button>
               </div>
               <div className="flex flex-1 items-center justify-center  p-2 sm:items-stretch sm:justify-start">
-                
-                
-                  <img
-                    src={"/static/images/logo.jpg"}
-                    width={150}
-                    height={150}
-                    alt="logo"
-                    className="cursor-pointer rounded-lg"
-                  />
-                
-                
+                <img
+                  src={"/static/images/logo.jpg"}
+                  width={150}
+                  height={150}
+                  alt="logo"
+                  className="cursor-pointer rounded-lg"
+                />
+
                 <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
                   <Link
                     href="/"
@@ -76,14 +72,14 @@ export default function Header() {
                   >
                     Home
                   </Link>
-                  {isConnected && isRegistered ? (
-                    <Link
-                      href="/dashboard"
-                      className="inline-flex items-center  px-1 pt-1 text-sm font-medium text-gray-900"
-                    >
-                      Dashboard
-                    </Link>
-                  ): null}
+
+                  <Link
+                    href="/dashboard"
+                    className="inline-flex items-center  px-1 pt-1 text-sm font-medium text-gray-900"
+                  >
+                    Dashboard
+                  </Link>
+
                   <Link
                     href="/"
                     className="inline-flex items-center  px-1 pt-1 text-sm font-medium text-gray-900"
@@ -102,19 +98,15 @@ export default function Header() {
                   >
                     About
                   </Link>
-
-
-                  
                 </div>
               </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 ">
+              <div className="absolute inset-y-0  right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 ">
                 {!hideConnectBtn && (
                   <ConnectButton
                     showBalance={{
                       smallScreen: true,
                       largeScreen: false,
                     }}
-                    
                   />
                 )}
               </div>
@@ -130,13 +122,15 @@ export default function Header() {
               >
                 Home
               </Disclosure.Button>
-              {isRegistered && (<Disclosure.Button
-                as="a"
-                href="/dashboard"
-                className="block border-l-4 border-black py-2 pl-3 pr-4 text-base font-medium text-black"
-              >
-                Dashboard
-              </Disclosure.Button>)}
+              {isRegistered && (
+                <Disclosure.Button
+                  as="a"
+                  href="/dashboard"
+                  className="block border-l-4 border-black py-2 pl-3 pr-4 text-base font-medium text-black"
+                >
+                  Dashboard
+                </Disclosure.Button>
+              )}
               <Disclosure.Button
                 as="a"
                 href="/"

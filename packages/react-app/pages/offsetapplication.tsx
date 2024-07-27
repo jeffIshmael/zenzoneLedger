@@ -73,6 +73,7 @@ const OffsetApplication = () => {
         args: [
           data.category as string,
           data.description as string,
+          cid as string,
           BigInt(Number(data.estAmount)),
         ],
       });
