@@ -16,14 +16,14 @@ async function main() {
   
   // const address = "0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1";
 
-  const Zenzone = await hre.ethers.getContractFactory("zenzone");
-  const zenZone = await Zenzone.deploy();
+  const Carbontrace = await hre.ethers.getContractFactory("CarbonTrace");
+  const carbontrace = await Carbontrace.deploy();
 
   console.log(`Done`);
 
-  await zenZone.deployed();
+  await carbontrace.deployed();
 
-  console.log(`Contract deployed to ${zenZone.address}`);
+  console.log(`Contract deployed to ${carbontrace.address}`);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
